@@ -19,6 +19,14 @@ class RequestStore {
     }
   };
 
+  deleteRequest = async (requestId, navigation) => {
+    try {
+      await instance.delete(`/request/${requestId}`);
+      this.requests = this.requests.filter((request) => request._id !== requestId);
+      navigation.navigate("Timeline");
+    } catch (error) {
+      console.log(error);
+
   createRequest = async (newRequest, toast) => {
     try {
       const res = await instance.post("/request", newRequest);
@@ -37,6 +45,7 @@ class RequestStore {
           "Please try again to create a new request and make sure you are signed in.",
         placement: "top",
       });
+
     }
   };
 }
