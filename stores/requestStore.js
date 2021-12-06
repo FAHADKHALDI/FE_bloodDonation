@@ -25,7 +25,9 @@ class RequestStore {
       this.requests = this.requests.filter((request) => request._id !== requestId);
       navigation.navigate("Timeline");
     } catch (error) {
-      console.log(error);
+      console.log(error)
+    }}
+    
 
   createRequest = async (newRequest, toast) => {
     try {
