@@ -2,16 +2,26 @@ import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
 import RequestsList from "../Requests/RequestsList";
+import { View, Button } from "native-base";
+import authStore from "../../stores/authStore";
 
 // Components
 
 const Timeline = ({ navigation }) => {
+  const logout = () => {
+    authStore.logOut(navigation);
+  };
   return (
+    <View>
     <SafeAreaView style={(styles.body, { backgroundColor: "##ffffff" })}>
       <RequestsList navigation={navigation} />
     </SafeAreaView>
+    <Button onPress={logout}>logout</Button>
+    </View>
+
   );
 };
+
 
 export default Timeline;
 

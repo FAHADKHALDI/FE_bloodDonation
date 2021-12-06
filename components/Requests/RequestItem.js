@@ -1,9 +1,14 @@
-import { Box, Text, Stack, HStack, Heading, MoreIcon } from "native-base";
+import { observer } from "mobx-react";
+import { Box, Text, Stack, HStack, Heading, MoreIcon, Button } from "native-base";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import requestStore from "../../stores/requestStore";
+
+
+
 
 const RequestItem = ({ request, navigation }) => {
+
+
   return (
     // <View>
     //   <Box
@@ -43,10 +48,18 @@ const RequestItem = ({ request, navigation }) => {
     //     </HStack>
     //   </Box>
     // </View>
-    <Text>{request.name}</Text>
+    
+      
+    <Button onPress={() => navigation.navigate("RequestDetail", { request: request })}>{request.name}</Button>
+    
+
+    
+
+  
+
   );
 };
 
-export default RequestItem;
+export default observer(RequestItem);
 
 const styles = StyleSheet.create({});

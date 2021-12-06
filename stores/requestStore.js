@@ -18,6 +18,16 @@ class RequestStore {
       console.log("requestStore --> fetchRequests", error);
     }
   };
+
+  deleteRequest = async (requestId, navigation) => {
+    try {
+      await instance.delete(`/request/${requestId}`);
+      this.requests = this.requests.filter((request) => request._id !== requestId);
+      navigation.navigate("Timeline");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 const requestStore = new RequestStore();
