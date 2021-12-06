@@ -22,7 +22,7 @@ const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
     name: "",
     civilId: "",
-    phoneNum: "",
+    phone: "",
     password: "",
   });
 

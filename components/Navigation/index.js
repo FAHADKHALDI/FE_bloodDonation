@@ -14,7 +14,7 @@ const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
-    <Navigator initialRouteName={"Home"}>
+    <Navigator initialRouteName={"Signin"}>
       <Screen
         name="Home"
         component={Home}
@@ -36,6 +36,7 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
+      <Screen name="Timeline" component={Timeline} />
     </Navigator>
   );
 };

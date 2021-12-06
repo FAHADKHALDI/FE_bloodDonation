@@ -1,13 +1,14 @@
 import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
+import RequestsList from "../Requests/RequestsList";
 
 // Components
 
 const Timeline = ({ navigation }) => {
   return (
     <SafeAreaView style={(styles.body, { backgroundColor: "##ffffff" })}>
-      {/* <RequestsList navigation={navigation} /> */}
+      <RequestsList navigation={navigation} />
     </SafeAreaView>
   );
 };
