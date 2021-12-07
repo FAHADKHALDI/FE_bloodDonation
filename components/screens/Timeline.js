@@ -2,11 +2,13 @@ import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
 import RequestsList from "../Requests/RequestsList";
+import SearchRequestList from "../Search/SearchRequestList";
 
 import { View, Button } from "native-base";
 import authStore from "../../stores/authStore";
 
 import RequestModal from "../Requests/RequestModal";
+import Search from "./Search";
 
 
 // Components
@@ -20,6 +22,9 @@ const Timeline = ({ navigation }) => {
     <SafeAreaView style={(styles.body, { backgroundColor: "##ffffff" })}>
       <RequestsList navigation={navigation} />
       <RequestModal />
+      <Search />
+      <SearchRequestList />
+      
     </SafeAreaView>
     <Button onPress={logout}>logout</Button>
     </View>
