@@ -1,3 +1,4 @@
+import { Pressable } from "native-base";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Block, Text } from "../../assets";
@@ -6,34 +7,38 @@ import requestStore from "../../stores/requestStore";
 
 const RequestItem = ({ request, navigation }) => {
   return (
-    <Block row card shadow color="white" style={styles.request}>
-      <Block
-        flex={0.25}
-        card
-        column
-        color="secondary"
-        style={styles.requestStatus}
-      >
-        <Block flex={0.25} middle center color={theme.colors.primary}>
-          <Text small white style={{ textTransform: "uppercase" }}>
-            {request.priority}
-          </Text>
+    <Pressable
+      onPress={() => navigation.navigate("RequestDetail", { request: request })}
+    >
+      <Block row card shadow color="white" style={styles.request}>
+        <Block
+          flex={0.25}
+          card
+          column
+          color="secondary"
+          style={styles.requestStatus}
+        >
+          <Block flex={0.25} middle center color={theme.colors.primary}>
+            <Text small white style={{ textTransform: "uppercase" }}>
+              {request.priority}
+            </Text>
+          </Block>
+          <Block flex={0.7} center middle>
+            <Text h2 white>
+              {request.bloodType}
+            </Text>
+          </Block>
         </Block>
-        <Block flex={0.7} center middle>
-          <Text h2 white>
-            {request.bloodType}
+        <Block flex={0.75} column middle>
+          <Text h3 style={{ paddingVertical: 8 }}>
+            {request.name}
+          </Text>
+          <Text caption semibold>
+            {request.age} • {request.gender} • File Number:{request.fileNumber}
           </Text>
         </Block>
       </Block>
-      <Block flex={0.75} column middle>
-        <Text h3 style={{ paddingVertical: 8 }}>
-          {request.name}
-        </Text>
-        <Text caption semibold>
-          {request.age} • {request.gender} • File Number:{request.fileNumber}
-        </Text>
-      </Block>
-    </Block>
+    </Pressable>
   );
 };
 
