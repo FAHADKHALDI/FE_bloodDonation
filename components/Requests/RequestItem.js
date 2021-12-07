@@ -4,7 +4,10 @@ import { Block, Text } from "../../assets";
 import * as theme from "../../assets/theme";
 import requestStore from "../../stores/requestStore";
 
+
 const RequestItem = ({ request, navigation }) => {
+
+
   return (
     <Block row card shadow color="white" style={styles.request}>
       <Block
@@ -37,7 +40,7 @@ const RequestItem = ({ request, navigation }) => {
   );
 };
 
-export default RequestItem;
+export default observer(RequestItem);
 
 const styles = StyleSheet.create({
   safe: {
