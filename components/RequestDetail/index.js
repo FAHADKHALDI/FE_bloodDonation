@@ -13,15 +13,13 @@ const RequestDetail = ({navigation, route}) => {
       };
     return (
         <View>
-            <Text> Patient name: 
-               {request.name}
-               </Text>
-            <Text>Blood Typre: {request.bloodType}</Text>
+            <Text>Patient name: {request.name} </Text>
+            <Text>Blood Type: {request.bloodType}</Text>
             <Text>Description: {request.description}</Text>
             <Text>File Number: {request.fileNumber}</Text>
             <Text>Gender: {request.gender}</Text>
             <Text>Age: {request.age}</Text>
-            <Text>CiviId Number:{request.civilId}</Text>
+            <Text>Civil ID:{request.civilId}</Text>
             <Text>Phone Number: {request.phone}</Text>
             <Button onPress={Delete}>Delete post</Button>
         </View>
