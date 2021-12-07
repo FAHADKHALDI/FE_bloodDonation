@@ -1,65 +1,69 @@
-import { observer } from "mobx-react";
-import { Box, Text, Stack, HStack, Heading, MoreIcon, Button } from "native-base";
 import React from "react";
-import { StyleSheet, View } from "react-native";
-
-
+import { StyleSheet } from "react-native";
+import { Block, Text } from "../../assets";
+import * as theme from "../../assets/theme";
+import requestStore from "../../stores/requestStore";
 
 
 const RequestItem = ({ request, navigation }) => {
 
 
   return (
-    // <View>
-    //   <Box
-    //     shadow="2"
-    //     rounded="lg"
-    //     w={{ base: "64", md: "80", lg: "md" }}
-    //     _light={{ bg: "coolGray.50" }}
-    //     _dark={{ bg: "gray.700" }}
-    //   >
-    //     <Text bold position="absolute" color="coolGray.50" top="0" m="4">
-    //       NEWS
-    //     </Text>
-    //     <Stack space="2" p="4">
-    //       <Text color="gray.400">December 6, 2021</Text>
-    //       <Heading size={["md", "lg", "md"]} fontWeight="medium">
-    //         The Garden City
-    //       </Heading>
-    //       <Text isTruncated noOfLines={["4", "4", "4"]}>
-    //         Bengaluru (also called Bangalore) is the center of India's high-tech
-    //         industry. It is located in southern India on the Deccan Plateau.The
-    //         city is also known for its parks and nightlife. Bangalore is the
-    //         major center of India's IT industry, popularly known as the Silicon
-    //         Valley of India.
-    //       </Text>
-    //     </Stack>
-    //     <HStack space="3" px="4" pb="4">
-    //       <MoreIcon
-    //         _light={{ color: "emerald.800" }}
-    //         _dark={{ color: "emerald.300" }}
-    //       />
-    //       <Text
-    //         _light={{ color: "emerald.800" }}
-    //         _dark={{ color: "emerald.300" }}
-    //       >
-    //         Find out more
-    //       </Text>
-    //     </HStack>
-    //   </Box>
-    // </View>
-    
-      
-    <Button onPress={() => navigation.navigate("RequestDetail", { request: request })}>{request.name}</Button>
-    
-
-    
-
-  
-
+    <Block row card shadow color="white" style={styles.request}>
+      <Block
+        flex={0.25}
+        card
+        column
+        color="secondary"
+        style={styles.requestStatus}
+      >
+        <Block flex={0.25} middle center color={theme.colors.primary}>
+          <Text small white style={{ textTransform: "uppercase" }}>
+            {request.priority}
+          </Text>
+        </Block>
+        <Block flex={0.7} center middle>
+          <Text h2 white>
+            {request.bloodType}
+          </Text>
+        </Block>
+      </Block>
+      <Block flex={0.75} column middle>
+        <Text h3 style={{ paddingVertical: 8 }}>
+          {request.name}
+        </Text>
+        <Text caption semibold>
+          {request.age} • {request.gender} • File Number:{request.fileNumber}
+        </Text>
+      </Block>
+    </Block>
   );
 };
 
 export default observer(RequestItem);
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+    backgroundColor: theme.colors.primary,
+  },
+  requests: {
+    marginTop: -55,
+    paddingTop: 55 + 20,
+    paddingHorizontal: 15,
+    zIndex: -1,
+  },
+  requestsHeader: {
+    paddingHorizontal: 20,
+    paddingBottom: 15,
+  },
+  request: {
+    padding: 20,
+    marginBottom: 15,
+  },
+  requestStatus: {
+    marginRight: 20,
+    overflow: "hidden",
+    height: 90,
+  },
+});
