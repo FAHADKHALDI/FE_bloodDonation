@@ -36,8 +36,20 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
-      <Screen name="Timeline" component={Timeline} />
-      <Screen name="RequestDetail" component={RequestDetail}/>
+      <Screen
+        name="Timeline"
+        component={Timeline}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Screen
+        name="RequestDetail"
+        component={RequestDetail}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Navigator>
   );
 };
