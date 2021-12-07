@@ -1,4 +1,4 @@
-import React from "react";
+import { observer } from "mobx-react";
 import {
   Button,
   Modal,
@@ -12,38 +12,45 @@ import {
   useToast,
   HStack,
 } from "native-base";
-import { useState } from "react";
-import { Switch } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Switch } from "react-native";
+import authStore from "../../stores/authStore";
 import requestStore from "../../stores/requestStore";
-const RequestModal = () => {
+
+const EditRequestModal = ({ request, navigation }) => {
+  //   console.log(requestId._id);
   const [showModal, setShowModal] = useState(false);
   const [isEnable, setIsEnable] = useState(false);
-  const [request, setRequest] = useState({
-    name: "",
-    fileNumber: "",
-    bloodType: "",
-    age: "",
-    phone: "",
-    civilId: "",
-    gender: "",
-    description: "",
-    priority: "",
+  const handleChange = () => {
+    setIsEnable(!isEnable);
+    setUpdatedRequest({
+      ...updatedRequest,
+      priority: isEnable ? "Normal" : "Urgent",
+    });
+  };
+  const [updatedRequest, setUpdatedRequest] = useState({
+    name: request.name,
+    fileNumber: request.fileNumber,
+    bloodType: request.bloodType,
+    age: request.age,
+    phone: request.phone,
+    civilId: request.civilId,
+    gender: request.gender,
+    description: request.description,
+    priority: request.priority,
   });
 
   const toast = useToast();
-  const handleChange = () => {
-    setIsEnable(!isEnable);
-    setRequest({ ...request, priority: isEnable ? "low" : "high" });
-  };
-  const handleSubmit = () => {
-    console.log(request);
-    console.log(isEnable);
-    requestStore.createRequest(request, toast);
-  };
 
+  const handleSubmit = () => {
+    requestStore.editRequest(request._id, updatedRequest, toast, navigation);
+  };
   return (
     <>
-      <Button onPress={() => setShowModal(true)}>Create Request</Button>
+      {request.owner._id === authStore.user._id && (
+        <Button onPress={() => setShowModal(true)}>Update Request</Button>
+      )}
+
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
@@ -53,15 +60,19 @@ const RequestModal = () => {
               <FormControl.Label>Name</FormControl.Label>
               <Input
                 placeholder="Enter Your Name"
-                onChangeText={(name) => setRequest({ ...request, name })}
+                defaultValue={request.name}
+                onChangeText={(name) =>
+                  setUpdatedRequest({ ...updatedRequest, name })
+                }
               />
             </FormControl>
             <FormControl mt="3">
               <FormControl.Label>File Number</FormControl.Label>
               <Input
                 placeholder="Enter File Number"
+                defaultValue={request.fileNumber}
                 onChangeText={(fileNumber) =>
-                  setRequest({ ...request, fileNumber })
+                  setUpdatedRequest({ ...updatedRequest, fileNumber })
                 }
               />
             </FormControl>
@@ -69,17 +80,18 @@ const RequestModal = () => {
               <FormControl.Label>Blood Type</FormControl.Label>
               <VStack alignItems="center" space={4}>
                 <Select
-                  selectedValue={request.bloodType}
+                  selectedValue={updatedRequest.bloodType}
                   minWidth="200"
                   accessibilityLabel="Choose Blood Type"
                   placeholder="Choose Blood Type"
+                  defaultValue={request.bloodType}
                   _selectedItem={{
                     bg: "teal.600",
                     endIcon: <CheckIcon size="5" />,
                   }}
                   mt={1}
                   onValueChange={(bloodType) =>
-                    setRequest({ ...request, bloodType })
+                    setUpdatedRequest({ ...updatedRequest, bloodType })
                   }
                 >
                   <Select.Item label="A+" value="A+" />
@@ -97,37 +109,49 @@ const RequestModal = () => {
               <FormControl.Label>Age</FormControl.Label>
               <Input
                 placeholder="Enter Your Age"
-                onChangeText={(age) => setRequest({ ...request, age })}
+                defaultValue={request.age}
+                onChangeText={(age) =>
+                  setUpdatedRequest({ ...updatedRequest, age: +age })
+                }
               />
             </FormControl>
             <FormControl mt="3">
               <FormControl.Label>Phone Number</FormControl.Label>
               <Input
                 placeholder="Enter Phone Number"
-                onChangeText={(phone) => setRequest({ ...request, phone })}
+                defaultValue={request.phone}
+                onChangeText={(phone) =>
+                  setUpdatedRequest({ ...updatedRequest, phone })
+                }
               />
             </FormControl>
             <FormControl mt="3">
               <FormControl.Label>Civil ID</FormControl.Label>
               <Input
                 placeholder="Enter Civil ID"
-                onChangeText={(civilId) => setRequest({ ...request, civilId })}
+                defaultValue={request.civilId}
+                onChangeText={(civilId) =>
+                  setUpdatedRequest({ ...updatedRequest, civilId })
+                }
               />
             </FormControl>
             <FormControl mt="3">
               <FormControl.Label>Gender</FormControl.Label>
               <VStack alignItems="center" space={4}>
                 <Select
-                  selectedValue={request.gender}
+                  selectedValue={updatedRequest.gender}
                   minWidth="200"
                   accessibilityLabel="Choose Gender"
                   placeholder="Choose Gender"
+                  defaultValue={request.gender}
                   _selectedItem={{
                     bg: "teal.600",
                     endIcon: <CheckIcon size="5" />,
                   }}
                   mt={1}
-                  onValueChange={(gender) => setRequest({ ...request, gender })}
+                  onValueChange={(gender) =>
+                    setUpdatedRequest({ ...updatedRequest, gender })
+                  }
                 >
                   <Select.Item label="Male" value="male" />
                   <Select.Item label="Female" value="female" />
@@ -138,8 +162,9 @@ const RequestModal = () => {
               <FormControl.Label>Description</FormControl.Label>
               <Input
                 placeholder="Write Your Description"
+                defaultValue={request.description}
                 onChangeText={(description) =>
-                  setRequest({ ...request, description })
+                  setUpdatedRequest({ ...updatedRequest, description })
                 }
               />
             </FormControl>
@@ -167,4 +192,6 @@ const RequestModal = () => {
   );
 };
 
-export default RequestModal;
+export default observer(EditRequestModal);
+
+const styles = StyleSheet.create({});
