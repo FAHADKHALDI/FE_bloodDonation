@@ -14,6 +14,7 @@ const RequestDetail = ({ navigation, route }) => {
   };
   const toast = useToast();
 
+
   return (
     <View>
       <Text>{request.name}</Text>
@@ -29,5 +30,23 @@ const RequestDetail = ({ navigation, route }) => {
     </View>
   );
 };
+
+    const Delete = () => {
+        requestStore.deleteRequest(request._id, navigation);
+      };
+    return (
+        <View>
+            <Text>Patient name: {request.name} </Text>
+            <Text>Blood Type: {request.bloodType}</Text>
+            <Text>Description: {request.description}</Text>
+            <Text>File Number: {request.fileNumber}</Text>
+            <Text>Gender: {request.gender}</Text>
+            <Text>Age: {request.age}</Text>
+            <Text>Civil ID:{request.civilId}</Text>
+            <Text>Phone Number: {request.phone}</Text>
+            <Button onPress={Delete}>Delete post</Button>
+        </View>
+    )
+}
 
 export default observer(RequestDetail);
