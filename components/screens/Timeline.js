@@ -4,12 +4,11 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import RequestsList from "../Requests/RequestsList";
 import SearchRequestList from "../Search/SearchRequestList";
 
-import { View, Button } from "native-base";
+import { Text, View, Button } from "native-base";
 import authStore from "../../stores/authStore";
 
 import RequestModal from "../Requests/RequestModal";
 import Search from "./Search";
-
 
 // Components
 
@@ -19,19 +18,17 @@ const Timeline = ({ navigation }) => {
   };
   return (
     <View>
-    <SafeAreaView style={(styles.body, { backgroundColor: "##ffffff" })}>
-      <RequestsList navigation={navigation} />
-      <RequestModal />
-      <Search />
-      <SearchRequestList />
-      
-    </SafeAreaView>
-    <Button onPress={logout}>logout</Button>
+      <View>
+        <Text></Text>
+      </View>
+      <SafeAreaView style={(styles.body, { backgroundColor: "#ffffff" })}>
+        <RequestsList navigation={navigation} />
+        <RequestModal />
+      </SafeAreaView>
+      <Button onPress={logout}>logout</Button>
     </View>
-
   );
 };
-
 
 export default Timeline;
 
@@ -47,6 +44,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     textAlign: "center",
+    // flexDirection: "coloum",
+  },
+  topContainer: {
+    flex: 0.25,
+    backgroundColor: "#D91C1F",
+  },
+  bottomContainer: {
+    flex: 1,
+    backgroundColor: "#ffffff",
   },
   button: {
     marginHorizontal: 20,
