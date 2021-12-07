@@ -1,14 +1,12 @@
 import { Pressable } from "native-base";
 import React from "react";
 import { StyleSheet } from "react-native";
+import { observer } from "mobx-react";
 import { Block, Text } from "../../assets";
 import * as theme from "../../assets/theme";
 import requestStore from "../../stores/requestStore";
 
-
 const RequestItem = ({ request, navigation }) => {
-
-
   return (
     <Pressable
       onPress={() => navigation.navigate("RequestDetail", { request: request })}
