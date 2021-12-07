@@ -27,7 +27,7 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
-      navigation.replace("Tabs");
+      navigation.replace("Signin");
     } catch (error) {
       console.log("AuthStore -> signup -> error", error);
       toast.show({
@@ -52,20 +52,20 @@ class AuthStore {
     }
   };
 
-  signout = async () => {
+
+  logOut = async (navigation) => {
     try {
       delete instance.defaults.headers.common.Authorization;
-      await AsyncStorage.removeItem("myToken");
-      runInAction(() => {
-        this.user = null;
-      });
+    await AsyncStorage.removeItem("myToken");
+    this.user = null;
+    
+    navigation.replace("Signin")
+    
     } catch (error) {
-      console.log(
-        "🚀 ~ file: authStore.js ~ line 62 ~ AuthStore ~ signout= ~ error",
-        error
-      );
+        console.log(error)
     }
-  };
+  
+};
 
   checkForToken = async () => {
     try {

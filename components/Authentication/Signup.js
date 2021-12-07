@@ -24,6 +24,7 @@ const Signup = ({ navigation }) => {
     civilId: "",
     phone: "",
     password: "",
+    age: "",
   });
 
   const handleSubmit = () => {
@@ -59,6 +60,13 @@ const Signup = ({ navigation }) => {
               placeholder="  Enter your phone number"
               placeholderTextColor="#ffffff"
               onChangeText={(phoneNum) => setUser({ ...user, phoneNum })}
+            />
+            <Text style={styles.outsidebox}>Age</Text>
+            <TextInput
+              style={styles.box}
+              placeholder="  Enter your Age"
+              placeholderTextColor="#ffffff"
+              onChangeText={(age) => setUser({ ...user, age })}
             />
 
             <Text style={styles.outsidebox}>Password</Text>
