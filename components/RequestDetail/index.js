@@ -5,6 +5,7 @@ import { View, Text } from "react-native";
 import authStore from "../../stores/authStore";
 import EditRequestModal from "../Requests/EditRequestModal";
 import requestStore from "../../stores/requestStore";
+import Confirm from "../Confirmation/Confirm";
 
 const RequestDetail = ({ navigation, route }) => {
   const request = route.params.request;
@@ -26,6 +27,7 @@ const RequestDetail = ({ navigation, route }) => {
         <Button onPress={Delete}>Delete post</Button>
       )}
       <EditRequestModal request={request} navigation={navigation} />
+      <Confirm request={request} navigation={navigation} />
     </Center>
   );
 };

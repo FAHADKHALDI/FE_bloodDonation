@@ -83,6 +83,7 @@ class AuthStore {
       );
     }
   };
+
   editUser = async (updatedProfile, toast) => {
     try {
       const formData = new FormData();
