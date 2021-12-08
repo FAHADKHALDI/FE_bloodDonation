@@ -4,7 +4,6 @@ import {
   Modal,
   FormControl,
   Input,
-  Center,
   NativeBaseProvider,
   Select,
   VStack,
@@ -18,7 +17,6 @@ import authStore from "../../stores/authStore";
 import requestStore from "../../stores/requestStore";
 
 const EditRequestModal = ({ request, navigation }) => {
-  //   console.log(requestId._id);
   const [showModal, setShowModal] = useState(false);
   const [isEnable, setIsEnable] = useState(false);
   const handleChange = () => {
@@ -111,7 +109,7 @@ const EditRequestModal = ({ request, navigation }) => {
                 placeholder="Enter Your Age"
                 defaultValue={request.age}
                 onChangeText={(age) =>
-                  setUpdatedRequest({ ...updatedRequest, age: +age })
+                  setUpdatedRequest({ ...updatedRequest, age })
                 }
               />
             </FormControl>
