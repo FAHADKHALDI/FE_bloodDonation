@@ -1,8 +1,9 @@
 import { observer } from "mobx-react";
-import { Button, useToast } from "native-base";
+import { Button, Center, useToast } from "native-base";
 import React, { useState } from "react";
 import { View, Text } from "react-native";
-
+import authStore from "../../stores/authStore";
+import EditRequestModal from "../Requests/EditRequestModal";
 import requestStore from "../../stores/requestStore";
 
 const RequestDetail = ({ navigation, route }) => {
@@ -12,7 +13,7 @@ const RequestDetail = ({ navigation, route }) => {
     requestStore.deleteRequest(request._id, navigation);
   };
   return (
-    <View>
+    <Center>
       <Text>Patient name: {request.name} </Text>
       <Text>Blood Type: {request.bloodType}</Text>
       <Text>Description: {request.description}</Text>
@@ -21,8 +22,11 @@ const RequestDetail = ({ navigation, route }) => {
       <Text>Age: {request.age}</Text>
       <Text>Civil ID:{request.civilId}</Text>
       <Text>Phone Number: {request.phone}</Text>
-      <Button onPress={Delete}>Delete post</Button>
-    </View>
+      {request.owner._id === authStore.user._id && (
+        <Button onPress={Delete}>Delete post</Button>
+      )}
+      <EditRequestModal request={request} navigation={navigation} />
+    </Center>
   );
 };
 

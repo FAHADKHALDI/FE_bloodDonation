@@ -118,8 +118,8 @@ const EditRequestModal = ({ request, navigation }) => {
             <FormControl mt="3">
               <FormControl.Label>Phone Number</FormControl.Label>
               <Input
-                placeholder="Enter Phone Number"
                 defaultValue={request.phone}
+                placeholder="Enter Phone Number"
                 onChangeText={(phone) =>
                   setUpdatedRequest({ ...updatedRequest, phone })
                 }
