@@ -8,6 +8,7 @@ import Signin from "../Authentication/Signin";
 import Signup from "../Authentication/Signup";
 import Timeline from "../screens/Timeline";
 import RequestDetail from "../RequestDetail";
+
 //stores
 
 const RootNavigator = () => {
@@ -38,6 +39,7 @@ const RootNavigator = () => {
       />
       <Screen name="Timeline" component={Timeline} />
       <Screen name="RequestDetail" component={RequestDetail}/>
+      
     </Navigator>
   );
 };
