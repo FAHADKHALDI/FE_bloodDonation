@@ -22,12 +22,19 @@ class RequestStore {
   deleteRequest = async (requestId, navigation) => {
     try {
       await instance.delete(`/request/${requestId}`);
-      this.requests = this.requests.filter((request) => request._id !== requestId);
+      this.requests = this.requests.filter(
+        (request) => request._id !== requestId
+      );
+      toast.show({
+        title: "Request Deleted",
+        status: "success",
+        placement: "top",
+      });
       navigation.navigate("Timeline");
     } catch (error) {
-      console.log(error)
-    }}
-    
+      console.log(error);
+    }
+  };
 
   createRequest = async (newRequest, toast) => {
     try {
@@ -47,7 +54,23 @@ class RequestStore {
           "Please try again to create a new request and make sure you are signed in.",
         placement: "top",
       });
+    }
+  };
 
+  editRequest = async (requestId, updatedRequest, toast, navigation) => {
+    try {
+      const res = await instance.put(`/request/${requestId}`, updatedRequest);
+      this.requests = this.requests.map((request) =>
+        request._id === requestId ? res.data : request
+      );
+      toast.show({
+        title: "Request Updated",
+        status: "success",
+        placement: "top",
+      });
+      navigation.navigate("Timeline");
+    } catch (error) {
+      console.log("requestStore --> editRequest", error);
     }
   };
 }

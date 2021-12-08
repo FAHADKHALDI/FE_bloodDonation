@@ -79,7 +79,7 @@ const Signup = ({ navigation }) => {
             />
 
             <LinearGradient
-              colors={["#E63946", "#E96A70"]}
+              colors={["#BA181B", "#E5383B"]}
               style={styles.button}
               start={{ y: 0.0, x: 0.0 }}
               end={{ y: 0.0, x: 1.0 }}
@@ -129,14 +129,14 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     marginBottom: 20,
-    color: "#858585",
+    color: "#ffffff",
     textAlign: "left",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
     height: 65,
-    borderColor: "#E74651",
-    backgroundColor: "#E74651",
+    borderColor: "#BA181B",
+    backgroundColor: "#BA181B",
   },
   button: {
     marginHorizontal: 17,
@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
   signup: {
     alignContent: "center",
     textAlign: "center",
-    color: "#E74651",
+    color: "#BA181B",
   },
   login: {
     marginBottom: 50,
-    color: "#E74651",
+    color: "#BA181B",
     marginLeft: 25,
     fontSize: 35,
     fontWeight: "bold",

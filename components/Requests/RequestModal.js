@@ -4,17 +4,19 @@ import {
   Modal,
   FormControl,
   Input,
-  Center,
+  Pressable,
   NativeBaseProvider,
   Select,
   VStack,
   CheckIcon,
   useToast,
   HStack,
+  Text,
 } from "native-base";
 import { useState } from "react";
-import { Switch } from "react-native";
+import { Image, Switch, View } from "react-native";
 import requestStore from "../../stores/requestStore";
+
 const RequestModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [isEnable, setIsEnable] = useState(false);
@@ -27,13 +29,13 @@ const RequestModal = () => {
     civilId: "",
     gender: "",
     description: "",
-    priority: "",
+    priority: "NORMAL",
   });
 
   const toast = useToast();
   const handleChange = () => {
     setIsEnable(!isEnable);
-    setRequest({ ...request, priority: isEnable ? "low" : "high" });
+    setRequest({ ...request, priority: isEnable ? "NORMAL" : "URGENT" });
   };
   const handleSubmit = () => {
     console.log(request);
@@ -43,7 +45,31 @@ const RequestModal = () => {
 
   return (
     <>
-      <Button onPress={() => setShowModal(true)}>Button</Button>
+      <Pressable onPress={() => setShowModal(true)}>
+        <View alignItems="flex-end">
+          <View
+            style={{
+              width: 60,
+              height: 60,
+              borderRadius: 35,
+              marginTop: 10,
+              backgroundColor: "#D91C1F",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Image
+              source={require("../images/plus.png")}
+              resizeMode="center"
+              style={{
+                width: 40,
+                height: 40,
+                tintColor: "#fff",
+              }}
+            />
+          </View>
+        </View>
+      </Pressable>
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
@@ -52,7 +78,7 @@ const RequestModal = () => {
             <FormControl>
               <FormControl.Label>Name</FormControl.Label>
               <Input
-                placeholder="Enter Your Name"
+                placeholder="Enter Full Name"
                 onChangeText={(name) => setRequest({ ...request, name })}
               />
             </FormControl>
@@ -96,7 +122,7 @@ const RequestModal = () => {
             <FormControl mt="3">
               <FormControl.Label>Age</FormControl.Label>
               <Input
-                placeholder="Enter Your Age"
+                placeholder="Enter Age"
                 onChangeText={(age) => setRequest({ ...request, age })}
               />
             </FormControl>
@@ -143,22 +169,34 @@ const RequestModal = () => {
                 }
               />
             </FormControl>
-            <HStack alignItems="center" space={4}>
-              <Switch size="md" value={isEnable} onValueChange={handleChange} />
-            </HStack>
+            <View alignItems="flex-end">
+              <HStack alignItems="center" space={3} marginTop="1">
+                <Text style={{ fontFamily: "roboto" }}>URGENT</Text>
+                <Switch
+                  size="md"
+                  value={isEnable}
+                  onValueChange={handleChange}
+                />
+              </HStack>
+            </View>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
               <Button
                 variant="ghost"
-                colorScheme="blueGray"
+                colorScheme="red"
                 onPress={() => {
                   setShowModal(false);
                 }}
               >
                 Cancel
               </Button>
-              <Button onPress={handleSubmit}>Submit</Button>
+              <Button
+                onPress={handleSubmit}
+                style={{ backgroundColor: "#D91C1F" }}
+              >
+                Submit
+              </Button>
             </Button.Group>
           </Modal.Footer>
         </Modal.Content>

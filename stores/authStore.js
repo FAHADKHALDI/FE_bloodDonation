@@ -32,7 +32,7 @@ class AuthStore {
       console.log("AuthStore -> signup -> error", error);
       toast.show({
         status: "error",
-        title: "Invalid Login",
+        title: "Invalid Signup",
         description: "The username or password you entered is incorrect",
       });
     }
@@ -46,26 +46,23 @@ class AuthStore {
     } catch (error) {
       toast.show({
         status: "error",
-        title: "Invalid Login",
+        title: "Invalid Signin",
         description: "The username or password you entered is incorrect",
       });
     }
   };
 
-
   logOut = async (navigation) => {
     try {
       delete instance.defaults.headers.common.Authorization;
-    await AsyncStorage.removeItem("myToken");
-    this.user = null;
-    
-    navigation.replace("Signin")
-    
+      await AsyncStorage.removeItem("myToken");
+      this.user = null;
+
+      navigation.replace("Signin");
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-  
-};
+  };
 
   checkForToken = async () => {
     try {

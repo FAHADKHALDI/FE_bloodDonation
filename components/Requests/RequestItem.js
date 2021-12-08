@@ -7,6 +7,7 @@ import * as theme from "../../assets/theme";
 
 const RequestItem = ({ request, navigation }) => {
   return (
+
     <Pressable
       onPress={() => navigation.navigate("RequestDetail", { request: request })}
     >
