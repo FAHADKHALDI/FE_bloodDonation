@@ -35,9 +35,6 @@ class RequestStore {
       console.log(error);
     }
   };
-      console.log(error)
-    }}
-    
 
   createRequest = async (newRequest, toast) => {
     try {
