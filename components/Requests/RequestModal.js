@@ -36,6 +36,7 @@ const RequestModal = () => {
     setRequest({ ...request, priority: isEnable ? "low" : "high" });
   };
   const handleSubmit = () => {
+    // REVIEW: Remove console logs if you're done with them
     console.log(request);
     console.log(isEnable);
     requestStore.createRequest(request, toast);
@@ -82,6 +83,7 @@ const RequestModal = () => {
                     setRequest({ ...request, bloodType })
                   }
                 >
+                  {/* REVIEW: This can be done in a cleaner way. Create an array of all blood types here in this file const bloodTypes = ["A+", "A-"], then map over it and return an array of Select.Item component  */}
                   <Select.Item label="A+" value="A+" />
                   <Select.Item label="A-" value="A-" />
                   <Select.Item label="B+" value="B+" />

@@ -102,6 +102,7 @@ const Signup = ({ navigation }) => {
               <HStack>
                 <Text style={styles.signup}>Already have an account? </Text>
                 <Pressable onPress={() => navigation.navigate("Signin")}>
+                  {/* REVIEW: Move inline styling to stylesheet */}
                   <Text style={{ color: "#E96A70" }}> Sign in</Text>
                 </Pressable>
               </HStack>

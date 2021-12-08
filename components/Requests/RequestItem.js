@@ -19,6 +19,7 @@ const RequestItem = ({ request, navigation }) => {
           style={styles.requestStatus}
         >
           <Block flex={0.25} middle center color={theme.colors.primary}>
+            {/* REVIEW: Move inline styling to stylesheet */}
             <Text small white style={{ textTransform: "uppercase" }}>
               {request.priority}
             </Text>
@@ -30,6 +31,7 @@ const RequestItem = ({ request, navigation }) => {
           </Block>
         </Block>
         <Block flex={0.75} column middle>
+          {/* REVIEW: Move inline styling to stylesheet */}
           <Text h3 style={{ paddingVertical: 8 }}>
             {request.name}
           </Text>

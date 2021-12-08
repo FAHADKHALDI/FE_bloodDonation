@@ -10,6 +10,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { Pressable } from "native-base";
+// REVIEW: Remove unused imports
 
 // Stores
 import authStore from "../../stores/authStore";
@@ -22,6 +23,8 @@ const Home = ({ navigation }) => {
         <TouchableOpacity style={styles.button}>
           <Pressable
             onPress={() => {
+              // REVIEW: A cleaner way to do this without the if and else:
+              // navigation.navigate(authStore.user ? "Timeline" : "Signin");
               if (authStore.user) {
                 navigation.navigate("Timeline");
               } else {
@@ -30,6 +33,7 @@ const Home = ({ navigation }) => {
             }}
           >
             <Text
+              // REVIEW: Move inline styling to stylesheet
               style={{
                 color: "#ffff",
                 alignSelf: "center",
