@@ -59,7 +59,6 @@ class RequestStore {
 
   editRequest = async (requestId, updatedRequest, toast, navigation) => {
     try {
-      // if (user._id === requestId.owner._id) {
       const res = await instance.put(`/request/${requestId}`, updatedRequest);
       this.requests = this.requests.map((request) =>
         request._id === requestId ? res.data : request
@@ -70,14 +69,6 @@ class RequestStore {
         placement: "top",
       });
       navigation.navigate("Timeline");
-      // } else {
-      //   toast.show({
-      //     title: "Unauthorized",
-      //     status: "error",
-      //     description: "You are not the owner of this request",
-      //     placement: "top",
-      //   });
-      // }
     } catch (error) {
       console.log("requestStore --> editRequest", error);
     }
