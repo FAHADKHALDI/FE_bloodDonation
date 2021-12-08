@@ -27,19 +27,15 @@ const sizes = {
 
 const fonts = {
   h1: {
-    fontFamily: "Montserrat-Bold",
     fontSize: sizes.h1,
   },
   h2: {
-    fontFamily: "Montserrat-Bold",
     fontSize: sizes.h2,
   },
   h3: {
-    fontFamily: "Montserrat-Bold",
     fontSize: sizes.h3,
   },
   title: {
-    fontFamily: "Montserrat-Bold",
     fontSize: sizes.title,
   },
   body: {
