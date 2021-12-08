@@ -2,17 +2,12 @@ import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
 import RequestsList from "../Requests/RequestsList";
-
-import SearchRequestList from "../Search/SearchRequestList";
 import { Block, Text } from "../../assets";
 import { View, Button } from "native-base";
 
 import authStore from "../../stores/authStore";
 
 import RequestModal from "../Requests/RequestModal";
-
-
-
 
 // Components
 

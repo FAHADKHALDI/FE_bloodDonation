@@ -1,36 +1,35 @@
 import { observer } from "mobx-react";
 import { ScrollView, View } from "native-base";
-import React , {useState} from "react";
+import React, { useState } from "react";
 
 // Components
 import RequestItem from "./RequestItem";
-import SearchBar from "../Search/Searchbar";
+import SearchBar from "../Search/SearchBar";
 
 // Stores
-import requestStore from "../../stores/requestStore";
-
+import RequestStore from "../../stores/requestStore";
 
 const RequestsList = ({ navigation }) => {
-  
-const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
 
-  const requestList = requestStore.requests
-  .filter((request) => request.bloodType.toLowerCase().includes(query.toLowerCase()) )
-  .map((request) => (
-    <RequestItem request={request} key={request._id} navigation={navigation} />
-  ));
+  const requestList = RequestStore.requests
+    .filter((request) =>
+      request.bloodType.toLowerCase().includes(query.toLowerCase())
+    )
+    .map((request) => (
+      <RequestItem
+        request={request}
+        key={request._id}
+        navigation={navigation}
+      />
+    ));
   return (
+    <View>
+      <SearchBar setQuery={setQuery} />
 
-    
-    <View> 
-      <SearchBar setQuery={setQuery}/>
-
-   <ScrollView>{requestList}</ScrollView>
-   </View>
-   
-
-   
-  
-  )}
+      <ScrollView>{requestList}</ScrollView>
+    </View>
+  );
+};
 
 export default observer(RequestsList);
