@@ -3,7 +3,10 @@ import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
 import RequestsList from "../Requests/RequestsList";
 
-import { Text, View, Button } from "native-base";
+import SearchRequestList from "../Search/SearchRequestList";
+import { Block, Text } from "../../assets";
+import { View, Button } from "native-base";
+
 import authStore from "../../stores/authStore";
 
 import RequestModal from "../Requests/RequestModal";
@@ -19,19 +22,19 @@ const Timeline = ({ navigation }) => {
   };
   return (
     <View>
-
-    <SafeAreaView style={(styles.body, { backgroundColor: "##ffffff" })}>
-    
-      <RequestsList navigation={navigation} />
-      <RequestModal />
-      
-     
-      
-    </SafeAreaView>
-    <Button onPress={logout}>logout</Button>
-
-    
-
+      <SafeAreaView style={styles.topContainer}>
+        <Text h2 center white>
+          Blood Requests
+        </Text>
+        <Block card shadow color="white" style={styles.request}>
+          <Text>Welcome Back!</Text>
+        </Block>
+      </SafeAreaView>
+      <SafeAreaView style={(styles.body, { backgroundColor: "#ffffff" })}>
+        <RequestsList navigation={navigation} />
+        <RequestModal />
+      </SafeAreaView>
+      <Button onPress={logout}>logout</Button>
     </View>
   );
 };
@@ -50,11 +53,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     textAlign: "center",
-    // flexDirection: "coloum",
+    flexDirection: "column",
   },
   topContainer: {
-    flex: 0.25,
-    backgroundColor: "#D91C1F",
+    flex: 1,
+    backgroundColor: "#BA181B",
   },
   bottomContainer: {
     flex: 1,
@@ -80,5 +83,18 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
+  },
+  requests: {
+    marginTop: -55,
+    paddingTop: 55 + 20,
+    paddingHorizontal: 15,
+    zIndex: -1,
+  },
+  request: {
+    padding: 20,
+    marginTop: 15,
+    marginBottom: 15,
+    marginLeft: 10,
+    marginRight: 10,
   },
 });

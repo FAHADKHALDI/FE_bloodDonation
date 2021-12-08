@@ -25,7 +25,7 @@ const Signin = ({ navigation }) => {
         <TextInput
           style={styles.box}
           placeholder="  Enter your Civil ID"
-          placeholderTextColor="white"
+          placeholderTextColor="#BA181B"
           onChangeText={(username) => setUser({ ...user, username })}
         />
         <Text style={styles.outsidebox}>Password</Text>
@@ -33,7 +33,7 @@ const Signin = ({ navigation }) => {
           style={styles.box}
           placeholder="  Enter your password"
           secureTextEntry={true}
-          placeholderTextColor="white"
+          placeholderTextColor="#BA181B"
           onChangeText={(password) => setUser({ ...user, password })}
         />
         <LinearGradient
@@ -86,14 +86,19 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     marginBottom: 20,
-    color: "white",
+    color: "#BA181B",
     textAlign: "left",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    height: 65,
+    height: 40,
     borderColor: "#BA181B",
-    backgroundColor: "#BA181B",
+    borderTopColor: "white",
+    borderLeftColor: "white",
+    borderRightColor: "white",
+    backgroundColor: "white",
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
   button: {
     marginHorizontal: 17,

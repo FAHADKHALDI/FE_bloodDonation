@@ -11,6 +11,10 @@ import {
   Center,
   HStack,
   KeyboardAvoidingView,
+  VStack,
+  Select,
+  CheckIcon,
+  FormControl,
 } from "native-base";
 
 // Stores
@@ -25,6 +29,7 @@ const Signup = ({ navigation }) => {
     phone: "",
     password: "",
     age: "",
+    bloodType: "",
   });
 
   const handleSubmit = () => {
@@ -42,7 +47,7 @@ const Signup = ({ navigation }) => {
             <TextInput
               style={styles.box}
               placeholder=" Enter your Full Name "
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#BA181B"
               onChangeText={(name) => setUser({ ...user, name })}
             />
 
@@ -50,7 +55,7 @@ const Signup = ({ navigation }) => {
             <TextInput
               style={styles.box}
               placeholder=" Enter your Civil ID"
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#BA181B"
               onChangeText={(civilId) => setUser({ ...user, civilId })}
             />
 
@@ -58,14 +63,14 @@ const Signup = ({ navigation }) => {
             <TextInput
               style={styles.box}
               placeholder="  Enter your phone number"
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#BA181B"
               onChangeText={(phoneNum) => setUser({ ...user, phoneNum })}
             />
             <Text style={styles.outsidebox}>Age</Text>
             <TextInput
               style={styles.box}
-              placeholder="  Enter your Age"
-              placeholderTextColor="#ffffff"
+              placeholder="  Enter your age"
+              placeholderTextColor="#BA181B"
               onChangeText={(age) => setUser({ ...user, age })}
             />
 
@@ -74,10 +79,36 @@ const Signup = ({ navigation }) => {
               style={styles.box}
               secureTextEntry={true}
               placeholder="  Pick a strong password"
-              placeholderTextColor="#ffffff"
+              placeholderTextColor="#BA181B"
               onChangeText={(password) => setUser({ ...user, password })}
             />
-
+            <Text style={styles.outsidebox}>Blood Type</Text>
+            <FormControl isRequired>
+              <VStack alignItems="center" space={4}>
+                <Select
+                  color="#BA181B"
+                  selectedValue={user.bloodType}
+                  minWidth="200"
+                  accessibilityLabel="Choose Blood Type"
+                  placeholder="Choose Blood Type"
+                  _selectedItem={{
+                    bg: "teal.600",
+                    endIcon: <CheckIcon size="5" />,
+                  }}
+                  mt={1}
+                  onValueChange={(bloodType) => setUser({ ...user, bloodType })}
+                >
+                  <Select.Item label="A+" value="A+" />
+                  <Select.Item label="A-" value="A-" />
+                  <Select.Item label="B+" value="B+" />
+                  <Select.Item label="B-" value="B-" />
+                  <Select.Item label="O+" value="O+" />
+                  <Select.Item label="O-" value="O-" />
+                  <Select.Item label="AB+" value="AB+" />
+                  <Select.Item label="AB-" value="AB-" />
+                </Select>
+              </VStack>
+            </FormControl>
             <LinearGradient
               colors={["#BA181B", "#E5383B"]}
               style={styles.button}
@@ -115,7 +146,7 @@ const Signup = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
+    marginTop: 50,
     marginLeft: 10,
   },
   body: {
@@ -127,16 +158,21 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderWidth: 3,
     padding: 10,
-    margin: 10,
-    marginBottom: 20,
-    color: "#ffffff",
+    margin: 4,
+    marginBottom: 3,
+    color: "#BA181B",
     textAlign: "left",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
-    height: 65,
+    borderRadius: 0,
+    height: 40,
     borderColor: "#BA181B",
-    backgroundColor: "#BA181B",
+    borderTopColor: "white",
+    borderLeftColor: "white",
+    borderRightColor: "white",
+    backgroundColor: "white",
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
   },
   button: {
     marginHorizontal: 17,

@@ -7,7 +7,6 @@ import * as theme from "../../assets/theme";
 
 const RequestItem = ({ request, navigation }) => {
   return (
-
     <Pressable
       onPress={() => navigation.navigate("RequestDetail", { request: request })}
     >
@@ -63,6 +62,9 @@ const styles = StyleSheet.create({
   request: {
     padding: 20,
     marginBottom: 15,
+    marginBottom: 15,
+    marginLeft: 10,
+    marginRight: 10,
   },
   requestStatus: {
     marginRight: 20,
