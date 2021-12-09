@@ -1,12 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import {
-  Modal,
-  Button,
-  VStack,
-  FormControl,
-  NativeBaseProvider,
-} from "native-base";
+import { StyleSheet, Text, Pressable } from "react-native";
+import { Modal, Button, VStack, FormControl, Image } from "native-base";
 import Icon from "react-native-vector-icons/Feather";
 
 const Confirm = ({ request, navigation }) => {
@@ -45,14 +39,21 @@ const Confirm = ({ request, navigation }) => {
         </Modal.Content>
       </Modal>
       <VStack space={8} alignItems="center">
-        <Button
-          w="104"
+        <Pressable
           onPress={() => {
             setModalVisible(!modalVisible);
           }}
         >
-          Donate
-        </Button>
+          <Image
+            source={require("../images/blood.png")}
+            resizeMode="center"
+            style={{
+              width: 40,
+              height: 40,
+              alignItems: "flex-start",
+            }}
+          />
+        </Pressable>
       </VStack>
     </>
   );
