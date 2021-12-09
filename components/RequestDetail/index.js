@@ -16,7 +16,7 @@ const RequestDetail = ({ navigation, route }) => {
     requestStore.deleteRequest(request._id, navigation);
   };
   return (
-    <View>
+    <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
         <Text h2 center white>
           Request: #{request.fileNumber}
@@ -43,10 +43,10 @@ const RequestDetail = ({ navigation, route }) => {
             </Block>
           </Block>
           <Block flex={0.75} column middle>
-            <Text h3 style={{ paddingVertical: 8 }}>
-              {request.name} • File Number:
-              {request.fileNumber}
+            <Text h3 style={{ paddingVertical: 5 }}>
+              {request.name}
             </Text>
+            <Text h3>File Number: {request.fileNumber}</Text>
             <Text caption semibold>
               {request.age} • {request.gender} • Civil ID:
               {request.civilId}
@@ -73,6 +73,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.primary,
   },
+  body: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+  },
+
   topContainer: {
     backgroundColor: "#BA181B",
     padding: 30,
@@ -81,6 +86,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     backgroundColor: "#ffffff",
+    marginTop: 10,
     height: 250,
   },
   requests: {

@@ -55,9 +55,11 @@ const Timeline = ({ navigation }) => {
       <ScrollView style={styles.bottomContainer}>
         <SafeAreaView style={styles.bottomContainer}>
           <RequestsList navigation={navigation} />
-          <RequestModal />
         </SafeAreaView>
       </ScrollView>
+      <View style={styles.btnContainer}>
+        <RequestModal />
+      </View>
     </View>
   );
 };
@@ -109,6 +111,11 @@ const styles = StyleSheet.create({
   bottomContainer: {
     backgroundColor: "#ffffff",
   },
+  btnContainer: {
+    position: "absolute",
+    bottom: 30,
+    right: 30,
+  },
   button: {
     marginHorizontal: 20,
     marginTop: 500,
@@ -153,6 +160,6 @@ const styles = StyleSheet.create({
     height: 23,
     marginLeft: 378,
     position: "absolute",
-    marginTop: 7,
+    marginTop: 5,
   },
 });
