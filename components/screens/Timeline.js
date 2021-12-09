@@ -56,7 +56,7 @@ const Timeline = ({ navigation }) => {
         </Block>
       </SafeAreaView>
       <Block style={styles.blockContainer}></Block>
-      <ScrollView>
+      <ScrollView style={styles.bottomContainer}>
         <SafeAreaView style={styles.bottomContainer}>
           <RequestsList navigation={navigation} />
           <RequestModal />
