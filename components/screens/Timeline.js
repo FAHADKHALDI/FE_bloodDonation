@@ -10,7 +10,7 @@ import RequestModal from "../Requests/RequestModal";
 const Timeline = ({ navigation }) => {
   const handleLogOut = () => {
     navigation.navigate("Home");
-    authStore.signout();
+    authStore.logOut();
   };
 
   const [currentDate, setCurrentDate] = useState("");
@@ -24,11 +24,7 @@ const Timeline = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
-        <Pressable
-          onPress={() => {
-            handleLogOut();
-          }}
-        >
+        <Pressable onPress={handleLogOut}>
           <Image
             style={styles.logout}
             source={require("../images/Logout.png")}
