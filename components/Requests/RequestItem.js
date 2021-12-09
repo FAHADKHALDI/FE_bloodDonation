@@ -4,8 +4,10 @@ import { StyleSheet } from "react-native";
 import { observer } from "mobx-react";
 import { Block, Text } from "../../assets";
 import * as theme from "../../assets/theme";
+import Icon from "react-native-vector-icons/Feather";
 
 const RequestItem = ({ request, navigation }) => {
+  const donated = request.donate;
   return (
     <Pressable
       onPress={() => navigation.navigate("RequestDetail", { request: request })}
@@ -36,6 +38,9 @@ const RequestItem = ({ request, navigation }) => {
           <Text caption semibold>
             {request.age} • {request.gender} • File Number:{request.fileNumber}
           </Text>
+          {request.donate === true && (
+            <Icon name="check-circle" style={{ color: "#65CC65" }} size="35" />
+          )}
         </Block>
       </Block>
     </Pressable>
