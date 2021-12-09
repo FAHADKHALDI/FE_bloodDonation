@@ -73,6 +73,22 @@ class RequestStore {
       console.log("requestStore --> editRequest", error);
     }
   };
+
+  confirmDonation = async (updatedDonation, requestId, toast) => {
+    try {
+      const res = await instance.put(`/request/${requestId}`, updatedDonation);
+      this.requests = this.requests.map((request) =>
+        request._id === requestId ? res.data : request
+      );
+      toast.show({
+        title: "Donor Found !",
+        status: "success",
+        placement: "top",
+      });
+    } catch (error) {
+      console.log("requestStore --> confirmDonation", error);
+    }
+  };
 }
 
 const requestStore = new RequestStore();
