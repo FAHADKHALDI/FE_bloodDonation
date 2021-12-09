@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
-import { Button, Center, useToast } from "native-base";
+import { Button, HStack, Image, useToast } from "native-base";
 import React, { useState } from "react";
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, Pressable } from "react-native";
 import authStore from "../../stores/authStore";
 import EditRequestModal from "../Requests/EditRequestModal";
 import requestStore from "../../stores/requestStore";
@@ -12,7 +12,7 @@ import * as theme from "../../assets/theme";
 const RequestDetail = ({ navigation, route }) => {
   const request = route.params.request;
 
-  const Delete = () => {
+  const handleDelete = () => {
     requestStore.deleteRequest(request._id, navigation);
   };
   return (
@@ -56,11 +56,25 @@ const RequestDetail = ({ navigation, route }) => {
             </Text>
           </Block>
         </Block>
-        {request.owner._id === authStore.user._id && (
-          <Button onPress={Delete}>Delete post</Button>
-        )}
-        <EditRequestModal request={request} navigation={navigation} />
-        <Confirm request={request} navigation={navigation} />
+        <HStack style={{ ignItems: "space-between" }}>
+          {request.owner._id === authStore.user._id && (
+            <Pressable onPress={handleDelete}>
+              <Image
+                source={require("../images/cdelete.png")}
+                resizeMode="center"
+                style={{
+                  width: 40,
+                  height: 40,
+                  alignItems: "flex-start",
+                  marginLeft: 125,
+                }}
+              />
+            </Pressable>
+          )}
+
+          <EditRequestModal request={request} navigation={navigation} />
+          <Confirm request={request} navigation={navigation} />
+        </HStack>
       </SafeAreaView>
     </View>
   );

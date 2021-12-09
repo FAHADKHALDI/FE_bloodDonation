@@ -10,9 +10,10 @@ import {
   CheckIcon,
   useToast,
   HStack,
+  Image,
 } from "native-base";
 import React, { useState } from "react";
-import { StyleSheet, Switch } from "react-native";
+import { StyleSheet, Switch, Pressable } from "react-native";
 import authStore from "../../stores/authStore";
 import requestStore from "../../stores/requestStore";
 
@@ -46,7 +47,17 @@ const EditRequestModal = ({ request, navigation }) => {
   return (
     <>
       {request.owner._id === authStore.user._id && (
-        <Button onPress={() => setShowModal(true)}>Update Request</Button>
+        <Pressable onPress={() => setShowModal(true)}>
+          <Image
+            source={require("../images/cedit.png")}
+            resizeMode="center"
+            style={{
+              width: 40,
+              height: 40,
+              alignItems: "flex-start",
+            }}
+          />
+        </Pressable>
       )}
 
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>

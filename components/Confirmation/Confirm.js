@@ -1,12 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import {
-  Modal,
-  Button,
-  VStack,
-  NativeBaseProvider,
-  useToast,
-} from "native-base";
+
+import { StyleSheet, Text, Pressable } from "react-native";
+import { Modal, Button, VStack, FormControl, Image } from "native-base";
+
 import Icon from "react-native-vector-icons/Feather";
 import requestStore from "../../stores/requestStore";
 import { observer } from "mobx-react";
@@ -50,16 +46,25 @@ const Confirm = ({ request, navigation }) => {
         </Modal.Content>
       </Modal>
       <VStack space={8} alignItems="center">
-        {request.donate === false ? (
-          <Button
-            w="104"
-            onPress={() => {
-              setModalVisible(!modalVisible);
+
+{request.donate === false ? (
+        <Pressable
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <Image
+            source={require("../images/blood.png")}
+            resizeMode="center"
+            style={{
+              width: 40,
+              height: 40,
+              alignItems: "flex-start",
             }}
-          >
-            Donate
-          </Button>
-        ) : null}
+          />
+        </Pressable>
+) : null}
+
       </VStack>
     </>
   );
