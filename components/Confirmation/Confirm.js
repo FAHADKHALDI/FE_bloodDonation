@@ -1,10 +1,22 @@
 import React from "react";
+
 import { StyleSheet, Text, Pressable } from "react-native";
 import { Modal, Button, VStack, FormControl, Image } from "native-base";
+
 import Icon from "react-native-vector-icons/Feather";
+import requestStore from "../../stores/requestStore";
+import { observer } from "mobx-react";
 
 const Confirm = ({ request, navigation }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
+
+  const toast = useToast();
+  const handleSubmit = () => {
+    const donated = request;
+    donated.donate = true;
+    requestStore.confirmDonation(donated, request._id, toast);
+    navigation.navigate("Timeline");
+  };
   return (
     <>
       <Modal
@@ -27,18 +39,15 @@ const Confirm = ({ request, navigation }) => {
             Thank you for Donating !
           </Modal.Body>
           <Modal.Footer>
-            <Button
-              flex="1"
-              onPress={() => {
-                navigation.navigate("Timeline");
-              }}
-            >
+            <Button flex="1" onPress={handleSubmit}>
               Done
             </Button>
           </Modal.Footer>
         </Modal.Content>
       </Modal>
       <VStack space={8} alignItems="center">
+
+{request.donate === false ? (
         <Pressable
           onPress={() => {
             setModalVisible(!modalVisible);
@@ -54,11 +63,13 @@ const Confirm = ({ request, navigation }) => {
             }}
           />
         </Pressable>
+) : null}
+
       </VStack>
     </>
   );
 };
 
-export default Confirm;
+export default observer(Confirm);
 
 const styles = StyleSheet.create({});

@@ -41,6 +41,7 @@ const RequestModal = () => {
     console.log(request);
     console.log(isEnable);
     requestStore.createRequest(request, toast);
+    setShowModal(false);
   };
 
   return (
