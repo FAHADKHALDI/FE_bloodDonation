@@ -46,11 +46,11 @@ const RequestModal = () => {
   return (
     <>
       <Pressable onPress={() => setShowModal(true)}>
-        <View alignItems="flex-end">
+        <View>
           <View
             style={{
-              width: 60,
-              height: 60,
+              width: 70,
+              height: 70,
               borderRadius: 35,
               marginTop: 10,
               backgroundColor: "#D91C1F",
@@ -62,8 +62,8 @@ const RequestModal = () => {
               source={require("../images/plus.png")}
               resizeMode="center"
               style={{
-                width: 40,
-                height: 40,
+                width: 50,
+                height: 50,
                 tintColor: "#fff",
               }}
             />
