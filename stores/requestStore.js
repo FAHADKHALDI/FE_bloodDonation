@@ -74,9 +74,9 @@ class RequestStore {
     }
   };
 
-  confirmDonation = async (updatedDonation, requestId, toast) => {
+  confirmDonation = async (requestId, toast) => {
     try {
-      const res = await instance.put(`/request/${requestId}`, updatedDonation);
+      const res = await instance.put(`/request/${requestId}`);
       this.requests = this.requests.map((request) =>
         request._id === requestId ? res.data : request
       );
