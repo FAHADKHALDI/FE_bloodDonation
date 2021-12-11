@@ -7,7 +7,6 @@ import * as theme from "../../assets/theme";
 import Icon from "react-native-vector-icons/Feather";
 
 const RequestItem = ({ request, navigation }) => {
-  const donated = request.donate;
   return (
     <Pressable
       onPress={() => navigation.navigate("RequestDetail", { request: request })}
