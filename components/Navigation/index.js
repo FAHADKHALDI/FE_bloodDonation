@@ -8,6 +8,7 @@ import Signin from "../Authentication/Signin";
 import Signup from "../Authentication/Signup";
 import Timeline from "../screens/Timeline";
 import RequestDetail from "../RequestDetail";
+import ProfilePage from "../screens/ProfilePage";
 
 //stores
 
@@ -15,7 +16,6 @@ const RootNavigator = () => {
   const { Navigator, Screen } = createStackNavigator();
 
   return (
-
     <Navigator initialRouteName={"Home"}>
       <Screen
         name="Home"
@@ -53,7 +53,13 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
-
+      <Screen
+        name="ProfilePage"
+        component={ProfilePage}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Navigator>
   );
 };
