@@ -6,6 +6,7 @@ import { Block, Text } from "../../assets";
 import { View, ScrollView, Image, Pressable } from "native-base";
 import authStore from "../../stores/authStore";
 import RequestModal from "../Requests/RequestModal";
+import { observer } from "mobx-react";
 
 const Timeline = ({ navigation }) => {
   const handleLogOut = () => {
@@ -28,6 +29,23 @@ const Timeline = ({ navigation }) => {
           Hayat App
         </Text>
         <Block>
+          <Image
+            style={styles.avatar}
+            source={require("../images/redavatar.png")}
+            alt="avatar"
+          />
+          <Text white style={styles.wlctext}>
+            Welcome Back!
+          </Text>
+          <Text white style={styles.datetext}>
+            {currentDate}
+          </Text>
+          {authStore.user && (
+            <Text h3 white style={styles.nametext}>
+              {authStore.user.name}
+            </Text>
+          )}
+
           <Pressable onPress={() => navigation.navigate("ProfilePage")}>
             <Image
               style={styles.avatar}
@@ -66,7 +84,7 @@ const Timeline = ({ navigation }) => {
   );
 };
 
-export default Timeline;
+export default observer(Timeline);
 
 const styles = StyleSheet.create({
   image: {

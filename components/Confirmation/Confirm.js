@@ -51,15 +51,17 @@ const Confirm = ({ request, navigation }) => {
               setModalVisible(!modalVisible);
             }}
           >
-            <Image
-              source={require("../images/blood.png")}
-              resizeMode="center"
-              style={{
-                width: 40,
-                height: 40,
-                alignItems: "flex-start",
-              }}
-            />
+            {request.donate === false && (
+              <Image
+                source={require("../images/blood.png")}
+                resizeMode="center"
+                style={{
+                  width: 40,
+                  height: 40,
+                  alignItems: "flex-start",
+                }}
+              />
+            )}
           </Pressable>
         )}
       </VStack>

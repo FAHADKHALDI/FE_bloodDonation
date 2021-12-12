@@ -11,9 +11,9 @@ import * as theme from "../../assets/theme";
 
 const RequestDetail = ({ navigation, route }) => {
   const request = route.params.request;
-
+  const toast = useToast();
   const handleDelete = () => {
-    requestStore.deleteRequest(request._id, navigation);
+    requestStore.deleteRequest(request._id, toast, navigation);
   };
   return (
     <View style={styles.body}>
