@@ -5,6 +5,7 @@ import { Block, Text } from "../../assets";
 import { Pressable, View, Button, ScrollView, Image } from "native-base";
 import authStore from "../../stores/authStore";
 import { LinearGradient } from "expo-linear-gradient";
+import { observer } from "mobx-react";
 
 const ProfilePage = ({ navigation }) => {
   const logout = () => {
@@ -33,8 +34,9 @@ const ProfilePage = ({ navigation }) => {
                 {" "}
                 راعي فزعة{" "}
               </Text>
-              <Text black> {authStore.user.name} </Text>
-              <Text black> Your Score: 500 </Text>
+              {authStore.user && <Text black> {authStore.user.name} </Text>}
+
+              {authStore.user && <Text black> {authStore.user.score} </Text>}
             </Block>
           </Block>
         </SafeAreaView>
@@ -62,7 +64,7 @@ const ProfilePage = ({ navigation }) => {
   );
 };
 
-export default ProfilePage;
+export default observer(ProfilePage);
 
 const styles = StyleSheet.create({
   image: {

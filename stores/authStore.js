@@ -101,13 +101,22 @@ class AuthStore {
         placement: "top",
       });
     } catch (error) {
-      console.error("profileStore --> updateProfile", error);
+      console.error("authStore --> updateProfile", error);
       toast.show({
         title: "Unauthorized",
         status: "error",
         description: "You can only edit your profile. ",
         placement: "top",
       });
+    }
+  };
+
+  updateScore = async (userId) => {
+    try {
+      const res = await instance.put(`/${userId}`);
+      this.user = res.data;
+    } catch (error) {
+      console.log("authStore --> updateScore", error);
     }
   };
 }

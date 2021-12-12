@@ -10,10 +10,11 @@ import authStore from "../../stores/authStore";
 
 const Confirm = ({ request, navigation }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
-
+  const user = authStore.user;
   const toast = useToast();
   const handleSubmit = () => {
     requestStore.confirmDonation(request._id, toast);
+    authStore.updateScore(user._id);
     navigation.navigate("Timeline");
   };
   return (
@@ -34,12 +35,18 @@ const Confirm = ({ request, navigation }) => {
             style={{ marginLeft: 135, marginTop: 10, color: "#65CC65" }}
             size={40}
           />
-          <Modal.Body style={{ marginLeft: 55 }}>
-            Thank you for Donating !
-          </Modal.Body>
+          <Modal.Body style={{ marginLeft: 55 }}>Confirm Donation ?</Modal.Body>
           <Modal.Footer>
             <Button flex="1" onPress={handleSubmit}>
-              Done
+              Yes
+            </Button>
+            <Button
+              flex="1"
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
+            >
+              No
             </Button>
           </Modal.Footer>
         </Modal.Content>

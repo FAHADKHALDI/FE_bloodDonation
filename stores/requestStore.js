@@ -81,7 +81,7 @@ class RequestStore {
         request._id === requestId ? res.data : request
       );
       toast.show({
-        title: "Donor Found !",
+        title: "Thank You For Donating !",
         status: "success",
         placement: "top",
       });
