@@ -6,6 +6,7 @@ import { Block, Text } from "../../assets";
 import { View, ScrollView, Image, Pressable } from "native-base";
 import authStore from "../../stores/authStore";
 import RequestModal from "../Requests/RequestModal";
+import { observer } from "mobx-react";
 
 const Timeline = ({ navigation }) => {
   const handleLogOut = () => {
@@ -46,9 +47,11 @@ const Timeline = ({ navigation }) => {
           <Text white style={styles.datetext}>
             {currentDate}
           </Text>
-          <Text h3 white style={styles.nametext}>
-            Fahad AlKhaldi
-          </Text>
+          {authStore.user && (
+            <Text h3 white style={styles.nametext}>
+              {authStore.user.name}
+            </Text>
+          )}
         </Block>
       </SafeAreaView>
       <Block style={styles.blockContainer}></Block>
@@ -64,7 +67,7 @@ const Timeline = ({ navigation }) => {
   );
 };
 
-export default Timeline;
+export default observer(Timeline);
 
 const styles = StyleSheet.create({
   image: {

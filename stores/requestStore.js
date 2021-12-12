@@ -19,7 +19,7 @@ class RequestStore {
     }
   };
 
-  deleteRequest = async (requestId, navigation) => {
+  deleteRequest = async (requestId, toast, navigation) => {
     try {
       await instance.delete(`/request/${requestId}`);
       this.requests = this.requests.filter(
