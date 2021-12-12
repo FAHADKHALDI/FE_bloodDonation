@@ -24,31 +24,33 @@ const Timeline = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
-        <Pressable onPress={handleLogOut}>
-          <Image
-            style={styles.logout}
-            source={require("../images/Logout.png")}
-            alt="avatar"
-          />
-        </Pressable>
         <Text h2 center white>
           Hayat App
         </Text>
         <Block>
-          <Image
-            style={styles.avatar}
-            source={require("../images/redavatar.png")}
-            alt="avatar"
-          />
-          <Text white style={styles.wlctext}>
-            Welcome Back!
-          </Text>
-          <Text white style={styles.datetext}>
-            {currentDate}
-          </Text>
-          <Text h3 white style={styles.nametext}>
-            Fahad AlKhaldi
-          </Text>
+          <Pressable onPress={() => navigation.navigate("ProfilePage")}>
+            <Image
+              style={styles.avatar}
+              source={require("../images/redavatar.png")}
+              alt="avatar"
+            />
+            <Text white style={styles.wlctext}>
+              Welcome Back!
+            </Text>
+            <Text white style={styles.datetext}>
+              {currentDate}
+            </Text>
+            <Text h3 white style={styles.nametext}>
+              {authStore.user.name}
+            </Text>
+          </Pressable>
+          <Pressable onPress={handleLogOut}>
+            <Image
+              style={styles.logout}
+              source={require("../images/Logout.png")}
+              alt="avatar"
+            />
+          </Pressable>
         </Block>
       </SafeAreaView>
       <Block style={styles.blockContainer}></Block>
@@ -160,6 +162,6 @@ const styles = StyleSheet.create({
     height: 23,
     marginLeft: 378,
     position: "absolute",
-    marginTop: 5,
+    marginTop: -77,
   },
 });
