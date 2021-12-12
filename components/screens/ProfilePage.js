@@ -2,10 +2,11 @@ import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Block, Text } from "../../assets";
-import { View, Button, ScrollView, Image } from "native-base";
+import { Pressable, View, Button, ScrollView, Image } from "native-base";
 import authStore from "../../stores/authStore";
+import { LinearGradient } from "expo-linear-gradient";
 
-const Timeline = ({ navigation }) => {
+const ProfilePage = ({ navigation }) => {
   const logout = () => {
     authStore.logOut(navigation);
   };
@@ -14,28 +15,54 @@ const Timeline = ({ navigation }) => {
       <ScrollView>
         <SafeAreaView style={styles.topContainer}>
           <Text h2 center white>
-            Hayat App
+            Profile Page
           </Text>
           <Block>
             <Image
               style={styles.avatar}
-              source={require("../images/avatar.png")}
+              source={require("../images/redavatar.png")}
               alt="avatar"
             />
             <Block card shadow color="white" style={styles.request}>
-              <Text black>Welcome Back! </Text>
-              <Text black>Welcome Back! </Text>
-              <Text black>Welcome Back! </Text>
+              <Text
+                style={{
+                  fontSize: 17,
+                }}
+                black
+              >
+                {" "}
+                راعي فزعة{" "}
+              </Text>
+              <Text black> {authStore.user.name} </Text>
+              <Text black> Your Score: 500 </Text>
             </Block>
           </Block>
-          <Button onPress={logout}>logout</Button>
         </SafeAreaView>
       </ScrollView>
+      <LinearGradient
+        colors={["#BA181B", "#E5383B"]}
+        style={styles.button}
+        start={{ y: 0.0, x: 0.0 }}
+        end={{ y: 0.0, x: 1.0 }}
+      >
+        <Pressable onPress={logout}>
+          <Text
+            style={{
+              color: "#ffff",
+              alignSelf: "center",
+              textAlignVertical: "center",
+              fontSize: 20,
+            }}
+          >
+            logout
+          </Text>
+        </Pressable>
+      </LinearGradient>
     </View>
   );
 };
 
-export default Timeline;
+export default ProfilePage;
 
 const styles = StyleSheet.create({
   image: {
@@ -76,16 +103,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   button: {
-    marginHorizontal: 20,
-    marginTop: 500,
+    marginHorizontal: 17,
+    marginTop: 40,
     textAlign: "center",
-    margin: 5,
-    color: "#171717",
+    margin: 10,
+    color: "#a30000",
     borderRadius: 10,
-    height: 60,
-    width: 350,
+    height: 55,
     padding: 15,
-    backgroundColor: "#171717",
   },
   logo: {
     alignSelf: "center",

@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
 import { ScrollView, View } from "native-base";
 import React, { useState } from "react";
+import { Button } from "native-base";
 
 // Components
 import RequestItem from "./RequestItem";
 import SearchBar from "../Search/SearchBar";
-import UrgentList from "../UrgentList";
 // Stores
 import RequestStore from "../../stores/requestStore";
 
@@ -13,6 +13,8 @@ import RequestStore from "../../stores/requestStore";
 
 const RequestsList = ({ navigation }) => {
   const [query, setQuery] = useState("");
+  
+  const [isUrgent, setisUrgent] = useState(false);
 
 
   const requestList = RequestStore.requests
@@ -26,6 +28,7 @@ const RequestsList = ({ navigation }) => {
         navigation={navigation}
       />
     ));
+    
     const filteredUrgent = RequestStore.requests
     .filter((request) => request.priority === "URGENT")
     .map((request) => (
@@ -39,9 +42,11 @@ const RequestsList = ({ navigation }) => {
 
   return (
     <View>
-      <UrgentList filteredUrgent={filteredUrgent}/>
+      <Button onPress={() => setisUrgent(!isUrgent )}> {isUrgent ? "nonurgent" : "urgent" }   </Button>
       <SearchBar setQuery={setQuery} />
-      <ScrollView>{requestList}</ScrollView>
+      <ScrollView>{
+      isUrgent ? filteredUrgent :
+      requestList}</ScrollView>
     </View>
   );
 };
