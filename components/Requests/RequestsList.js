@@ -74,7 +74,7 @@ const RequestsList = ({ navigation }) => {
           marginBottom={3}
           onPress={() => setisUrgent(!isUrgent)}
         >
-          Priority
+          {isUrgent ? "Back" : "Priority"}
         </Button>
         <Button
           h="7"
@@ -88,7 +88,7 @@ const RequestsList = ({ navigation }) => {
           marginRight={1}
           onPress={() => setDonated(!donated)}
         >
-          Donated
+          {donated ? "Back" : "Donated"}
         </Button>
 
         <ScrollView horizontal={true}>
