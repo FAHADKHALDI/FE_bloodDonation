@@ -16,7 +16,7 @@ export default function SearchBar({ setQuery }) {
     >
       <TextInput
         onChangeText={(value) => setQuery(value)}
-        placeholder="Search for Blood Type!"
+        placeholder="Search By File Number!"
         placeholderTextColor="#BA181B"
         style={{ fontSize: 15, color: "#BA181B", paddingHorizontal: 5 }}
       />
