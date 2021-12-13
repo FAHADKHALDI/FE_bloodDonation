@@ -20,7 +20,7 @@ const RequestsList = ({ navigation }) => {
 
   const requestList = RequestStore.requests
     .filter((request) =>
-      request.bloodType.toLowerCase().includes(query.toLowerCase())
+      request.fileNumber.toLowerCase().includes(query.toLowerCase())
     )
     .map((request) => (
       <RequestItem
