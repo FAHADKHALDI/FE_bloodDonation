@@ -12,54 +12,107 @@ const ProfilePage = ({ navigation }) => {
     authStore.logOut(navigation);
   };
   return (
-    <View>
-      <ScrollView>
-        <SafeAreaView style={styles.topContainer}>
-          <Text h2 center white>
-            Profile Page
-          </Text>
-          <Block>
-            <Image
-              style={styles.avatar}
-              source={require("../images/redavatar.png")}
-              alt="avatar"
-            />
-            <Block card shadow color="white" style={styles.request}>
-              <Text
-                style={{
-                  fontSize: 17,
-                }}
-                black
-              >
-                {" "}
-                راعي فزعة{" "}
-              </Text>
-              {authStore.user && <Text black> {authStore.user.name} </Text>}
+    <View style={styles.body}>
+      <SafeAreaView style={styles.topContainer}>
+        <Text h2 center white>
+          Profile Page
+        </Text>
+        <Block>
+          <Image
+            style={styles.avatar}
+            source={require("../images/redavatar.png")}
+            alt="avatar"
+          />
+          <Block card shadow color="white" style={styles.request}>
+            <Text
+              style={{
+                fontSize: 17,
+                alignSelf: "flex-end",
+              }}
+              black
+            >
+              {" "}
+              راعي فزعة{" "}
+            </Text>
+            <Block style={styles.ns}>
+              {authStore.user && (
+                <Text black styles={{ alignContent: "center" }}>
+                  {" "}
+                  {authStore.user.name}{" "}
+                </Text>
+              )}
 
-              {authStore.user && <Text black> {authStore.user.score} </Text>}
+              {authStore.user && (
+                <Text black styles={{ alignContent: "center" }}>
+                  {" "}
+                  Score: {authStore.user.score}{" "}
+                </Text>
+              )}
             </Block>
           </Block>
-        </SafeAreaView>
-      </ScrollView>
-      <LinearGradient
-        colors={["#BA181B", "#E5383B"]}
-        style={styles.button}
-        start={{ y: 0.0, x: 0.0 }}
-        end={{ y: 0.0, x: 1.0 }}
-      >
-        <Pressable onPress={logout}>
-          <Text
-            style={{
-              color: "#ffff",
-              alignSelf: "center",
-              textAlignVertical: "center",
-              fontSize: 20,
-            }}
-          >
-            logout
+        </Block>
+      </SafeAreaView>
+      <View>
+        <SafeAreaView>
+          <Text black card shadow style={styles.request}>
+            Password: ********
           </Text>
-        </Pressable>
-      </LinearGradient>
+          <Text style={styles.horizontal}>
+            _____________________________________________________
+          </Text>
+          {authStore.user && (
+            <Text black card shadow style={styles.request}>
+              Blood-Type: {authStore.user.bloodType}
+            </Text>
+          )}
+          <Text style={styles.horizontal}>
+            _____________________________________________________
+          </Text>
+          {authStore.user && (
+            <Text black card shadow style={styles.request}>
+              Civil ID: {authStore.user.civilId}
+            </Text>
+          )}
+          <Text style={styles.horizontal}>
+            _____________________________________________________
+          </Text>
+          {authStore.user && (
+            <Text black card shadow style={styles.request}>
+              Age: {authStore.user.age}
+            </Text>
+          )}
+          <Text style={styles.horizontal}>
+            _____________________________________________________
+          </Text>
+          {authStore.user && (
+            <Text black card shadow style={styles.request}>
+              Phone Number: {authStore.user.phone}
+            </Text>
+          )}
+          <Text style={styles.horizontal}>
+            _____________________________________________________
+          </Text>
+          <LinearGradient
+            colors={["#BA181B", "#E5383B"]}
+            style={styles.button}
+            start={{ y: 0.0, x: 0.0 }}
+            end={{ y: 0.0, x: 1.0 }}
+          >
+            <Pressable onPress={logout}>
+              <Text
+                style={{
+                  color: "#ffff",
+                  alignSelf: "center",
+                  textAlignVertical: "center",
+                  fontSize: 20,
+                }}
+              >
+                logout
+              </Text>
+            </Pressable>
+          </LinearGradient>
+        </SafeAreaView>
+      </View>
     </View>
   );
 };
@@ -71,6 +124,11 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
+  },
+  ns: {
+    position: "relative",
+    marginTop: 70,
+    marginLeft: 100,
   },
   container: {
     marginTop: 80,
@@ -96,13 +154,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#BA181B",
     padding: 30,
-    marginBottom: 15,
+    marginBottom: 10,
     position: "relative",
-    height: 250,
+    height: 100,
+  },
+  blockContainer: {
+    backgroundColor: "#ffffff",
+    position: "relative",
+    height: 2,
+    borderTopWidth: 17,
+    borderColor: "#ffffff",
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
   },
   bottomContainer: {
     flex: 1,
     backgroundColor: "#ffffff",
+    marginBottom: 20,
   },
   button: {
     marginHorizontal: 17,
@@ -131,11 +199,16 @@ const styles = StyleSheet.create({
   },
   request: {
     padding: 10,
-    marginTop: 75,
+    marginTop: 30,
     marginBottom: 15,
     marginLeft: 10,
     marginRight: 10,
     position: "relative",
     zIndex: -1,
+  },
+  horizontal: {
+    color: "#BA181B",
+    fontWeight: "200",
+    alignSelf: "center",
   },
 });
