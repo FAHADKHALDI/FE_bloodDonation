@@ -59,12 +59,12 @@ const Signup = ({ navigation }) => {
               onChangeText={(civilId) => setUser({ ...user, civilId })}
             />
 
-            <Text style={styles.outsidebox}>phoneNum</Text>
+            <Text style={styles.outsidebox}>phone</Text>
             <TextInput
               style={styles.box}
               placeholder="  Enter your phone number"
               placeholderTextColor="#BA181B"
-              onChangeText={(phoneNum) => setUser({ ...user, phoneNum })}
+              onChangeText={(phone) => setUser({ ...user, phone })}
             />
             <Text style={styles.outsidebox}>Age</Text>
             <TextInput
