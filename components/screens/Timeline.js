@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "react-native-gesture-handler";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
 import RequestsList from "../Requests/RequestsList";
 import { Block, Text } from "../../assets";
 import { View, ScrollView, Image, Pressable } from "native-base";
@@ -13,6 +13,19 @@ const Timeline = ({ navigation }) => {
     navigation.navigate("Home");
     authStore.logOut();
   };
+
+  // const window = Dimensions.get("window");
+  // const screen = Dimensions.get("screen");
+
+  // useEffect(() => {
+  //   const subscription = Dimensions.addEventListener(
+  //     "change",
+  //     ({ window, screen }) => {
+  //       setDimensions({ window, screen });
+  //     }
+  //   );
+  //   return () => subscription?.remove();
+  // });
 
   const [currentDate, setCurrentDate] = useState("");
   useEffect(() => {
