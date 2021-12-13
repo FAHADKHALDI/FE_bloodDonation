@@ -9,6 +9,7 @@ import Signup from "../Authentication/Signup";
 import Timeline from "../screens/Timeline";
 import RequestDetail from "../RequestDetail";
 import ProfilePage from "../screens/ProfilePage";
+import Maps from "../Maps/Maps";
 
 //stores
 
@@ -60,6 +61,11 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
+      <Screen
+      name="Maps"
+      component={Maps}
+      />
+    
     </Navigator>
   );
 };

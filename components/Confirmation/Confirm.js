@@ -1,12 +1,13 @@
 import React from "react";
 
-import { StyleSheet, Text, Pressable } from "react-native";
+import { StyleSheet, Text, Pressable,  Alert, Linking  } from "react-native";
 import { Modal, Button, VStack, Image, useToast } from "native-base";
 
 import Icon from "react-native-vector-icons/Feather";
 import requestStore from "../../stores/requestStore";
 import { observer } from "mobx-react";
 import authStore from "../../stores/authStore";
+
 
 const Confirm = ({ request, navigation }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -17,6 +18,7 @@ const Confirm = ({ request, navigation }) => {
     authStore.updateScore(user._id);
     navigation.navigate("Timeline");
   };
+
   return (
     <>
       <Modal
