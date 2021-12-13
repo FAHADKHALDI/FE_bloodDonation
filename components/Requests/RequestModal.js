@@ -29,7 +29,7 @@ const RequestModal = () => {
     civilId: "",
     gender: "",
     description: "",
-    priority: "",
+    priority: "NORMAL",
   });
 
   const toast = useToast();
