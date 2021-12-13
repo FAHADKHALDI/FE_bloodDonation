@@ -1,7 +1,7 @@
 import { observer } from "mobx-react";
 import { Button, HStack, Image, useToast } from "native-base";
 import React, { useState } from "react";
-import { View, StyleSheet, SafeAreaView, Pressable } from "react-native";
+import { View, StyleSheet, SafeAreaView, Pressable, TouchableOpacity} from "react-native";
 import authStore from "../../stores/authStore";
 import EditRequestModal from "../Requests/EditRequestModal";
 import requestStore from "../../stores/requestStore";
@@ -9,13 +9,18 @@ import Confirm from "../Confirmation/Confirm";
 import { Block, Text } from "../../assets";
 import * as theme from "../../assets/theme";
 
+
 const RequestDetail = ({ navigation, route }) => {
+  
   const request = route.params.request;
   const toast = useToast();
   const handleDelete = () => {
     requestStore.deleteRequest(request._id, toast, navigation);
   };
+  
+  
   return (
+    
     <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
         <Text h2 center white>
@@ -69,11 +74,13 @@ const RequestDetail = ({ navigation, route }) => {
                   marginLeft: 125,
                 }}
               />
+              
             </Pressable>
           )}
 
           <EditRequestModal request={request} navigation={navigation} />
-          <Confirm request={request} navigation={navigation} />
+          <Confirm request={request} navigation={navigation} />  
+          
         </HStack>
       </SafeAreaView>
     </View>
