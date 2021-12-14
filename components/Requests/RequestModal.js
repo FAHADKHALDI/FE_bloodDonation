@@ -172,7 +172,7 @@ const RequestModal = () => {
             </FormControl>
             <View alignItems="flex-end">
               <HStack alignItems="center" space={3} marginTop="1">
-                <Text style={{ fontFamily: "roboto" }}>URGENT</Text>
+                <Text>URGENT</Text>
                 <Switch
                   size="md"
                   value={isEnable}
