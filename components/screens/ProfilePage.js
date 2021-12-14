@@ -101,8 +101,6 @@ const ProfilePage = ({ navigation }) => {
               start={{ y: 0.0, x: 0.0 }}
               end={{ y: 0.0, x: 1.0 }}
             >
-              
-
               <Pressable onPress={() => navigation.navigate("SponsorsList")}>
                 <Text
                   style={{
@@ -122,8 +120,7 @@ const ProfilePage = ({ navigation }) => {
               start={{ y: 0.0, x: 0.0 }}
               end={{ y: 0.0, x: 1.0 }}
             >
-             <EditProfileModal />
-
+              <EditProfileModal />
             </LinearGradient>
             <LinearGradient
               colors={["#BA181B", "#E5383B"]}
