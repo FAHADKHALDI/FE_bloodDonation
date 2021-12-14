@@ -2,7 +2,7 @@ import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Block, Text } from "../../assets";
-import { Pressable, View, Button, ScrollView, Image } from "native-base";
+import { Pressable, View, Image, HStack } from "native-base";
 import authStore from "../../stores/authStore";
 import { LinearGradient } from "expo-linear-gradient";
 import { observer } from "mobx-react";
@@ -36,14 +36,14 @@ const ProfilePage = ({ navigation }) => {
             </Text>
             <Block style={styles.ns}>
               {authStore.user && (
-                <Text black styles={{ alignContent: "center" }}>
+                <Text h2 black styles={{ alignContent: "center" }}>
                   {" "}
                   {authStore.user.name}{" "}
                 </Text>
               )}
 
               {authStore.user && (
-                <Text black styles={{ alignContent: "center" }}>
+                <Text h3 black styles={{ alignContent: "center" }}>
                   {" "}
                   Score: {authStore.user.score}{" "}
                 </Text>
@@ -55,7 +55,7 @@ const ProfilePage = ({ navigation }) => {
       <View>
         <SafeAreaView>
           <Text black card shadow style={styles.request}>
-            Password: ********
+            Password: ••••••••
           </Text>
           <Text style={styles.horizontal}>
             _____________________________________________________
@@ -92,25 +92,46 @@ const ProfilePage = ({ navigation }) => {
           <Text style={styles.horizontal}>
             _____________________________________________________
           </Text>
-          <LinearGradient
-            colors={["#BA181B", "#E5383B"]}
-            style={styles.button}
-            start={{ y: 0.0, x: 0.0 }}
-            end={{ y: 0.0, x: 1.0 }}
-          >
-            <Pressable onPress={logout}>
-              <Text
-                style={{
-                  color: "#ffff",
-                  alignSelf: "center",
-                  textAlignVertical: "center",
-                  fontSize: 20,
-                }}
-              >
-                logout
-              </Text>
-            </Pressable>
-          </LinearGradient>
+          <HStack style={styles.btnContainer}>
+            <LinearGradient
+              colors={["#BA181B", "#E5383B"]}
+              style={styles.button}
+              start={{ y: 0.0, x: 0.0 }}
+              end={{ y: 0.0, x: 1.0 }}
+            >
+              <Pressable onPress={logout}>
+                <Text
+                  style={{
+                    color: "#ffff",
+                    alignSelf: "center",
+                    textAlignVertical: "center",
+                    fontSize: 20,
+                  }}
+                >
+                  Edit Profile
+                </Text>
+              </Pressable>
+            </LinearGradient>
+            <LinearGradient
+              colors={["#BA181B", "#E5383B"]}
+              style={styles.button}
+              start={{ y: 0.0, x: 0.0 }}
+              end={{ y: 0.0, x: 1.0 }}
+            >
+              <Pressable onPress={logout}>
+                <Text
+                  style={{
+                    color: "#ffff",
+                    alignSelf: "center",
+                    textAlignVertical: "center",
+                    fontSize: 20,
+                  }}
+                >
+                  logout
+                </Text>
+              </Pressable>
+            </LinearGradient>
+          </HStack>
         </SafeAreaView>
       </View>
     </View>
@@ -127,8 +148,8 @@ const styles = StyleSheet.create({
   },
   ns: {
     position: "relative",
-    marginTop: 70,
-    marginLeft: 100,
+    marginTop: 55,
+    alignItems: "center",
   },
   container: {
     marginTop: 80,
@@ -210,5 +231,9 @@ const styles = StyleSheet.create({
     color: "#BA181B",
     fontWeight: "200",
     alignSelf: "center",
+  },
+  btnContainer: {
+    alignContent: "space-between",
+    alignItems: "center",
   },
 });
