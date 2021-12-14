@@ -43,7 +43,7 @@ const ProfilePage = ({ navigation }) => {
               )}
 
               {authStore.user && (
-                <Text h3 black styles={{ alignContent: "center" }}>
+                <Text secondary h3 styles={{ alignContent: "center" }}>
                   {" "}
                   Score: {authStore.user.score}{" "}
                 </Text>
@@ -54,14 +54,14 @@ const ProfilePage = ({ navigation }) => {
       </SafeAreaView>
       <View>
         <SafeAreaView>
-          <Text black card shadow style={styles.request}>
+          <Text title secondary style={styles.request}>
             Password: ••••••••
           </Text>
           <Text style={styles.horizontal}>
             _____________________________________________________
           </Text>
           {authStore.user && (
-            <Text black card shadow style={styles.request}>
+            <Text title secondary style={styles.request}>
               Blood-Type: {authStore.user.bloodType}
             </Text>
           )}
@@ -69,7 +69,7 @@ const ProfilePage = ({ navigation }) => {
             _____________________________________________________
           </Text>
           {authStore.user && (
-            <Text black card shadow style={styles.request}>
+            <Text secondary title style={styles.request}>
               Civil ID: {authStore.user.civilId}
             </Text>
           )}
@@ -77,7 +77,7 @@ const ProfilePage = ({ navigation }) => {
             _____________________________________________________
           </Text>
           {authStore.user && (
-            <Text black card shadow style={styles.request}>
+            <Text title secondary style={styles.request}>
               Age: {authStore.user.age}
             </Text>
           )}
@@ -85,7 +85,7 @@ const ProfilePage = ({ navigation }) => {
             _____________________________________________________
           </Text>
           {authStore.user && (
-            <Text black card shadow style={styles.request}>
+            <Text title secondary style={styles.request}>
               Phone Number: {authStore.user.phone}
             </Text>
           )}
@@ -99,13 +99,32 @@ const ProfilePage = ({ navigation }) => {
               start={{ y: 0.0, x: 0.0 }}
               end={{ y: 0.0, x: 1.0 }}
             >
+              <Pressable onPress={() => navigation.navigate("SponsorsList")}>
+                <Text
+                  style={{
+                    color: "#ffff",
+                    alignSelf: "center",
+                    textAlignVertical: "center",
+                    fontSize: 17,
+                  }}
+                >
+                  Our Sponsors
+                </Text>
+              </Pressable>
+            </LinearGradient>
+            <LinearGradient
+              colors={["#BA181B", "#E5383B"]}
+              style={styles.button}
+              start={{ y: 0.0, x: 0.0 }}
+              end={{ y: 0.0, x: 1.0 }}
+            >
               <Pressable onPress={logout}>
                 <Text
                   style={{
                     color: "#ffff",
                     alignSelf: "center",
                     textAlignVertical: "center",
-                    fontSize: 20,
+                    fontSize: 17,
                   }}
                 >
                   Edit Profile
@@ -124,7 +143,7 @@ const ProfilePage = ({ navigation }) => {
                     color: "#ffff",
                     alignSelf: "center",
                     textAlignVertical: "center",
-                    fontSize: 20,
+                    fontSize: 17,
                   }}
                 >
                   logout
@@ -197,11 +216,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 17,
     marginTop: 40,
     textAlign: "center",
-    margin: 10,
+    margin: 3,
     color: "#a30000",
     borderRadius: 10,
-    height: 55,
-    padding: 15,
+    height: 40,
+    padding: 10,
   },
   logo: {
     alignSelf: "center",
@@ -229,7 +248,7 @@ const styles = StyleSheet.create({
   },
   horizontal: {
     color: "#BA181B",
-    fontWeight: "200",
+    fontWeight: "300",
     alignSelf: "center",
   },
   btnContainer: {

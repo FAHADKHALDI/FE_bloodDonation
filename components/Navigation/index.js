@@ -9,6 +9,7 @@ import Signup from "../Authentication/Signup";
 import Timeline from "../screens/Timeline";
 import RequestDetail from "../RequestDetail";
 import ProfilePage from "../screens/ProfilePage";
+import SponsorsList from "../screens/SponsorsList";
 import Maps from "../Maps/Maps";
 
 //stores
@@ -61,11 +62,15 @@ const RootNavigator = () => {
           headerShown: false,
         }}
       />
+      <Screen name="Maps" component={Maps} />
+
       <Screen
-      name="Maps"
-      component={Maps}
+        name="SponsorsList"
+        component={SponsorsList}
+        options={{
+          headerShown: false,
+        }}
       />
-    
     </Navigator>
   );
 };
