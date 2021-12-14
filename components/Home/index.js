@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "react-native-gesture-handler";
 import {
   Text,
@@ -9,16 +9,47 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
+import { Block } from "../../assets";
 import { Pressable } from "native-base";
-
+import { SliderBox } from "react-native-image-slider-box";
 // Stores
 import authStore from "../../stores/authStore";
+
+const images = [
+  require("../images/slider1.png"),
+  require("../images/slider2.png"),
+  require("../images/slider3.png"),
+  require("../images/slider4.png"),
+];
 
 const Home = ({ navigation }) => {
   return (
     <SafeAreaView style={(styles.body, { backgroundColor: "white" })}>
       <View style={styles.container}>
         <Image source={require("../images/Logo.png")} style={styles.logo} />
+        <Block style={styles.slider}>
+          <SliderBox
+            sliderBoxHeight={150}
+            dotColor="#BA181B"
+            inactiveDotColor="#90A4AE"
+            paginationBoxVerticalPadding={10}
+            autoplay
+            circleLoop
+            resizeMethod={"resize"}
+            resizeMode={"center"}
+            paginationBoxStyle={{
+              position: "absolute",
+              bottom: 0,
+              padding: 0,
+              alignItems: "center",
+              alignSelf: "center",
+              justifyContent: "center",
+              paddingVertical: 10,
+            }}
+            images={images}
+          />
+        </Block>
+
         <TouchableOpacity style={styles.button}>
           <Pressable
             onPress={() => {
@@ -38,7 +69,7 @@ const Home = ({ navigation }) => {
                 fontWeight: "bold",
               }}
             >
-              Get started
+              Get Started
             </Text>
           </Pressable>
         </TouchableOpacity>
@@ -50,7 +81,7 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   image: {
     flex: 1,
-    resizeMode: "cover",
+    resizeMode: "center",
     justifyContent: "center",
   },
   container: {
@@ -59,10 +90,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignSelf: "center",
     textAlign: "center",
+    height: 800,
   },
   button: {
     marginHorizontal: 20,
-    marginTop: 300,
+    marginTop: 500,
     textAlign: "center",
     margin: 5,
     color: "#E63946",
@@ -76,11 +108,15 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 80,
     width: 270,
-    marginTop: 70,
+    marginTop: -150,
   },
   body: {
     flex: 1,
     backgroundColor: "#ffffff",
+  },
+  slider: {
+    position: "absolute",
+    marginLeft: -10,
   },
 });
 
