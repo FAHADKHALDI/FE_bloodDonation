@@ -84,13 +84,10 @@ class AuthStore {
     }
   };
 
-  editUser = async (updatedProfile, toast) => {
+  editUser = async (updatedProfileId, updatedProfile, toast) => {
     try {
-      const formData = new FormData();
-      for (const key in updatedProfile) {
-        formData.append(key, updatedProfile[key]);
-      }
-      const res = await instance.put(`/${updatedProfile._id}`, formData);
+      const res = await instance.put(`/${updatedProfileId}`, updatedProfile);
+
       runInAction(() => {
         this.user = res.data;
       });
@@ -102,6 +99,7 @@ class AuthStore {
       });
     } catch (error) {
       console.error("authStore --> updateProfile", error);
+      console.log(updatedProfile);
       toast.show({
         title: "Unauthorized",
         status: "error",
