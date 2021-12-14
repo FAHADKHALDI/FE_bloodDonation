@@ -10,8 +10,7 @@ import { observer } from "mobx-react";
 
 const Timeline = ({ navigation }) => {
   const handleLogOut = () => {
-    navigation.navigate("Home");
-    authStore.logOut();
+    authStore.logOut(navigation);
   };
 
   // const window = Dimensions.get("window");

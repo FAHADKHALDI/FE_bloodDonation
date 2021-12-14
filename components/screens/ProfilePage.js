@@ -6,11 +6,13 @@ import { Pressable, View, Image, HStack } from "native-base";
 import authStore from "../../stores/authStore";
 import { LinearGradient } from "expo-linear-gradient";
 import { observer } from "mobx-react";
+import EditProfileModal from "../../Profile/EditProfileModal";
 
 const ProfilePage = ({ navigation }) => {
   const logout = () => {
     authStore.logOut(navigation);
   };
+
   return (
     <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
@@ -99,18 +101,7 @@ const ProfilePage = ({ navigation }) => {
               start={{ y: 0.0, x: 0.0 }}
               end={{ y: 0.0, x: 1.0 }}
             >
-              <Pressable onPress={logout}>
-                <Text
-                  style={{
-                    color: "#ffff",
-                    alignSelf: "center",
-                    textAlignVertical: "center",
-                    fontSize: 20,
-                  }}
-                >
-                  Edit Profile
-                </Text>
-              </Pressable>
+              <EditProfileModal />
             </LinearGradient>
             <LinearGradient
               colors={["#BA181B", "#E5383B"]}
