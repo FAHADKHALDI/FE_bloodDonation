@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import { ScrollView, View } from "native-base";
 import React, { useState } from "react";
 import { Button, Center, HStack } from "native-base";
+import { StyleSheet, Text } from "react-native";
 
 // Components
 import RequestItem from "./RequestItem";
@@ -62,52 +63,48 @@ const RequestsList = ({ navigation }) => {
 
   return (
     <View>
+      <SearchBar setQuery={setQuery} />
       <HStack>
         <Button
-          h="7"
+          style={styles.btn}
+          h="9"
           w="20"
-          variant="outline"
-          colorScheme="secondary"
-          rounded="md"
           shadow={3}
           marginLeft={3}
-          marginBottom={3}
+          marginBottom={1}
           onPress={() => setisUrgent(!isUrgent)}
         >
-          {isUrgent ? "Back" : "Priority"}
+          <Text style={styles.txt}>{isUrgent ? "Back" : "Urgent"}</Text>
         </Button>
         <Button
-          h="7"
+          style={styles.btn}
+          h="9"
           w="20"
-          variant="outline"
-          colorScheme="secondary"
-          rounded="md"
           shadow={3}
           marginLeft={3}
-          marginBottom={3}
+          marginBottom={1}
           marginRight={1}
           onPress={() => setDonated(!donated)}
         >
-          {donated ? "Back" : "Donated"}
+          <Text style={styles.txt}>{donated ? "Back" : "Donated"}</Text>
         </Button>
 
         <ScrollView horizontal={true}>
           <Button
             onPress={() => setBloodType("")}
-            h="7"
+            style={styles.btn}
+            h="9"
             w="20"
-            variant="outline"
-            colorScheme="secondary"
             rounded="md"
             shadow={3}
             marginLeft={3}
-            marginBottom={3}
+            marginBottom={1}
           >
-            Show All
+            <Text style={styles.txt}>ShowAll</Text>
           </Button>
           <Button
             onPress={() => setBloodType("A+")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -118,7 +115,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("A-")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -129,7 +126,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("B+")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -140,7 +137,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("B-")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -151,7 +148,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("O+")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -162,7 +159,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("O-")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -173,7 +170,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("AB+")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -184,7 +181,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("AB-")}
-            h="7"
+            h="9"
             w="10"
             bg="#BA181B"
             rounded="md"
@@ -196,7 +193,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
         </ScrollView>
       </HStack>
-      <SearchBar setQuery={setQuery} />
+
       <ScrollView>
         {isUrgent
           ? filteredUrgent
@@ -211,3 +208,14 @@ const RequestsList = ({ navigation }) => {
 };
 
 export default observer(RequestsList);
+
+const styles = StyleSheet.create({
+  btn: {
+    backgroundColor: "#ffffff",
+    borderWidth: 1,
+    borderColor: "#BA181B",
+  },
+  txt: {
+    color: "#BA181B",
+  },
+});

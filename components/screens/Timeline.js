@@ -42,6 +42,13 @@ const Timeline = ({ navigation }) => {
           Hayat App
         </Text>
         <Block>
+          <Pressable onPress={handleLogOut}>
+            <Image
+              style={styles.logout}
+              source={require("../images/Logout.png")}
+              alt="avatar"
+            />
+          </Pressable>
           <Pressable onPress={() => navigation.navigate("ProfilePage")}>
             <Image
               style={styles.avatar}
@@ -51,30 +58,21 @@ const Timeline = ({ navigation }) => {
             <Text white style={styles.wlctext}>
               Welcome Back!
             </Text>
-            <Text white style={styles.datetext}>
-              {currentDate}
-            </Text>
             {authStore.user && (
               <Text h3 white style={styles.nametext}>
                 {authStore.user.name}
               </Text>
             )}
           </Pressable>
-          <Pressable onPress={handleLogOut}>
-            <Image
-              style={styles.logout}
-              source={require("../images/Logout.png")}
-              alt="avatar"
-            />
-          </Pressable>
+          <Text white style={styles.datetext}>
+            {currentDate}
+          </Text>
         </Block>
       </SafeAreaView>
       <Block style={styles.blockContainer}></Block>
-      <ScrollView style={styles.bottomContainer}>
-        <SafeAreaView style={styles.bottomContainer}>
-          <RequestsList navigation={navigation} />
-        </SafeAreaView>
-      </ScrollView>
+      <SafeAreaView style={styles.bottomContainer}>
+        <RequestsList navigation={navigation} />
+      </SafeAreaView>
       <View style={styles.btnContainer}>
         <RequestModal />
       </View>
@@ -105,20 +103,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 30,
     marginLeft: 30,
     alignSelf: "flex-start",
     position: "absolute",
-    marginTop: 15,
   },
   blockContainer: {
     backgroundColor: "#ffffff",
     position: "relative",
-    height: 2,
-    borderTopWidth: 17,
+    height: 1,
+    borderTopWidth: 10,
     borderColor: "#ffffff",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: 17,
+    borderTopRightRadius: 17,
+    marginTop: 18,
   },
   topContainer: {
     backgroundColor: "#BA181B",
@@ -127,7 +125,10 @@ const styles = StyleSheet.create({
     height: 150,
   },
   bottomContainer: {
+    flex: 1,
     backgroundColor: "#ffffff",
+    marginTop: -675,
+    height: 150,
   },
   btnContainer: {
     position: "absolute",
@@ -165,19 +166,19 @@ const styles = StyleSheet.create({
   wlctext: {
     position: "relative",
     marginLeft: 76,
-    marginTop: 17,
+    marginTop: 30,
   },
   nametext: { marginLeft: 81 },
   datetext: {
     position: "absolute",
     marginLeft: 345,
-    marginTop: 17,
+    marginTop: 30,
   },
   logout: {
     width: 23,
     height: 23,
-    marginLeft: 378,
+    marginLeft: 375,
     position: "absolute",
-    marginTop: -77,
+    marginTop: -10,
   },
 });
