@@ -63,11 +63,12 @@ const EditProfileModal = () => {
                 <FormControl.Label>Blood Type</FormControl.Label>
                 <VStack alignItems="center" space={4}>
                   <Select
+                    selectedValue={updateProfile.bloodType}
                     minWidth="200"
                     accessibilityLabel="Choose Blood Type"
                     placeholder="Choose Blood Type"
                     defaultValue={authStore.user.bloodType}
-                    onChangeText={(bloodType) =>
+                    onValueChange={(bloodType) =>
                       setUpdatedProfile({ ...updateProfile, bloodType })
                     }
                     _selectedItem={{

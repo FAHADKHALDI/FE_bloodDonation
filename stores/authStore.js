@@ -109,9 +109,9 @@ class AuthStore {
     }
   };
 
-  updateScore = async () => {
+  updateScore = async (userId) => {
     try {
-      const res = await instance.put("/score");
+      const res = await instance.put(`/${userId}/score`);
       this.user = res.data;
     } catch (error) {
       console.log("authStore --> updateScore", error);
