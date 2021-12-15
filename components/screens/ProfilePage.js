@@ -7,6 +7,7 @@ import authStore from "../../stores/authStore";
 import { LinearGradient } from "expo-linear-gradient";
 import { observer } from "mobx-react";
 import EditProfileModal from "../../Profile/EditProfileModal";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const ProfilePage = ({ navigation }) => {
   const logout = () => {
@@ -35,6 +36,11 @@ const ProfilePage = ({ navigation }) => {
             >
               {" "}
               راعي فزعة{" "}
+              <Icon
+                name="gratipay"
+                style={{ color: "#BA181B", alignSelf: "flex-start" }}
+                size="20"
+              />
             </Text>
             <Block style={styles.ns}>
               {authStore.user && (

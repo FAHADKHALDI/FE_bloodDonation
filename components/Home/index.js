@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "react-native-gesture-handler";
 import {
-  Text,
   View,
   SafeAreaView,
   StyleSheet,
@@ -9,9 +8,10 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
-import { Block } from "../../assets";
+import { Block, Text } from "../../assets";
 import { Pressable } from "native-base";
 import { SliderBox } from "react-native-image-slider-box";
+import Icon from "react-native-vector-icons/Feather";
 // Stores
 import authStore from "../../stores/authStore";
 
@@ -61,18 +61,61 @@ const Home = ({ navigation }) => {
             }}
           >
             <Text
+              h2
               style={{
                 color: "#ffff",
                 alignSelf: "center",
                 textAlignVertical: "auto",
-                fontSize: 23,
                 fontWeight: "bold",
               }}
             >
-              Get Started
+              Sign In
             </Text>
           </Pressable>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Pressable
+            onPress={() => {
+              if (authStore.user) {
+                navigation.navigate("Timeline");
+              } else {
+                navigation.navigate("Signup");
+              }
+            }}
+          >
+            <Text
+              h2
+              style={{
+                color: "#ffff",
+                alignSelf: "center",
+                textAlignVertical: "auto",
+                fontWeight: "bold",
+              }}
+            >
+              Create an account
+            </Text>
+          </Pressable>
+        </TouchableOpacity>
+        <Pressable onPress={() => navigation.navigate("Timeline")}>
+          <Text
+            h3
+            style={{
+              color: "#BA181B",
+              alignSelf: "flex-end",
+              textAlignVertical: "auto",
+              fontWeight: "bold",
+              marginTop: 70,
+              marginRight: 10,
+            }}
+          >
+            SKIP
+            <Icon
+              name="chevrons-right"
+              style={{ color: "#BA181B", alignSelf: "flex-start" }}
+              size="20"
+            />
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -93,8 +136,8 @@ const styles = StyleSheet.create({
     height: 800,
   },
   button: {
-    marginHorizontal: 20,
-    marginTop: 350,
+    marginHorizontal: 30,
+    marginTop: 0,
     textAlign: "center",
     margin: 5,
     color: "#E63946",
@@ -108,7 +151,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 350,
     width: 270,
-    marginTop: -200,
+    marginTop: -160,
+    marginBottom: 300,
   },
   body: {
     flex: 1,
