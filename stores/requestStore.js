@@ -59,7 +59,10 @@ class RequestStore {
 
   editRequest = async (requestId, updatedRequest, toast, navigation) => {
     try {
-      const res = await instance.put(`/request/${requestId}`, updatedRequest);
+      const res = await instance.put(
+        `/request/${requestId}/edit`,
+        updatedRequest
+      );
       this.requests = this.requests.map((request) =>
         request._id === requestId ? res.data : request
       );
