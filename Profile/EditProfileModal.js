@@ -37,7 +37,7 @@ const EditProfileModal = () => {
             color: "#ffff",
             alignSelf: "center",
             textAlignVertical: "center",
-            fontSize: 20,
+            fontSize: 17,
           }}
         >
           Edit Profile

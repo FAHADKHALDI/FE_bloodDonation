@@ -37,17 +37,19 @@ const Timeline = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
-        <Text h2 center white>
-          Hayat App
-        </Text>
+        <Image
+          style={styles.logo}
+          source={require("../images/WALogo.png")}
+          alt="white hayah logo"
+        />
+        <Pressable onPress={handleLogOut}>
+          <Image
+            style={styles.logout}
+            source={require("../images/Logout.png")}
+            alt="logout"
+          />
+        </Pressable>
         <Block>
-          <Pressable onPress={handleLogOut}>
-            <Image
-              style={styles.logout}
-              source={require("../images/Logout.png")}
-              alt="avatar"
-            />
-          </Pressable>
           <Pressable onPress={() => navigation.navigate("ProfilePage")}>
             <Image
               style={styles.avatar}
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     marginBottom: 10,
-    marginTop: 30,
+    marginTop: 65,
     marginLeft: 30,
     alignSelf: "flex-start",
     position: "absolute",
@@ -148,9 +150,10 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: "center",
-    height: 150,
-    width: 130,
-    marginTop: -40,
+    height: 120,
+    width: 100,
+    marginTop: 30,
+    position: "absolute",
   },
   body: {
     flex: 1,
@@ -165,19 +168,20 @@ const styles = StyleSheet.create({
   wlctext: {
     position: "relative",
     marginLeft: 76,
-    marginTop: 30,
+    marginTop: 65,
+    zIndex: -1,
   },
   nametext: { marginLeft: 81 },
   datetext: {
     position: "absolute",
     marginLeft: 345,
-    marginTop: 30,
+    marginTop: 65,
   },
   logout: {
     width: 23,
     height: 23,
     marginLeft: 375,
     position: "absolute",
-    marginTop: -10,
+    marginTop: 15,
   },
 });

@@ -26,7 +26,7 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView style={(styles.body, { backgroundColor: "white" })}>
       <View style={styles.container}>
-        <Image source={require("../images/Logo.png")} style={styles.logo} />
+        <Image source={require("../images/ALogo.png")} style={styles.logo} />
         <Block style={styles.slider}>
           <SliderBox
             sliderBoxHeight={150}
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 20,
-    marginTop: 500,
+    marginTop: 350,
     textAlign: "center",
     margin: 5,
     color: "#E63946",
@@ -106,9 +106,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: "center",
-    height: 80,
+    height: 350,
     width: 270,
-    marginTop: -150,
+    marginTop: -200,
   },
   body: {
     flex: 1,
