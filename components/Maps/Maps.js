@@ -6,7 +6,8 @@ import {
   Pressable,
   HStack,
   Text,
-  SafeAreaView,
+  View,
+  Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Icon from "react-native-vector-icons/Feather";
@@ -24,20 +25,24 @@ const Maps = () => {
     }
   };
   return (
-    <Button
-      style={{ width: 100, height: 60 }}
-      bg="#BA181B"
-      rounded="md"
-      shadow={3}
-      onPress={() => openUrl(url1)}
-    >
-      <Icon
-        name="map-pin"
-        style={{ color: "#ffff", alignSelf: "flex-start" }}
-        size="20"
-      />
-      On Map
-    </Button>
+    <Pressable onPress={() => openUrl(url1)}>
+      <View
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Image
+          source={require("../images/maps.png")}
+          resizeMode="center"
+          style={{
+            width: 40,
+            height: 40,
+            marginTop: 37,
+          }}
+        />
+      </View>
+    </Pressable>
   );
 };
 
