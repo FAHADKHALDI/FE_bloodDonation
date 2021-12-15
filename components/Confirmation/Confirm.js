@@ -15,7 +15,7 @@ const Confirm = ({ request, navigation }) => {
   const toast = useToast();
   const handleSubmit = () => {
     requestStore.confirmDonation(request._id, toast);
-    authStore.updateScore();
+    authStore.updateScore(user._id);
     navigation.navigate("Timeline");
   };
 
