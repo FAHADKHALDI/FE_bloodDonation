@@ -1,13 +1,13 @@
 import React from "react";
 
-import { StyleSheet, Text, Pressable,  Alert, Linking  } from "react-native";
-import { Modal, Button, VStack, Image, useToast } from "native-base";
+import { StyleSheet, Text, Pressable, Alert, Linking } from "react-native";
+import { Modal, Button, VStack, Image, useToast, HStack } from "native-base";
 
 import Icon from "react-native-vector-icons/Feather";
 import requestStore from "../../stores/requestStore";
 import { observer } from "mobx-react";
 import authStore from "../../stores/authStore";
-
+import { LinearGradient } from "expo-linear-gradient";
 
 const Confirm = ({ request, navigation }) => {
   const [modalVisible, setModalVisible] = React.useState(false);
@@ -34,21 +34,32 @@ const Confirm = ({ request, navigation }) => {
           <Modal.Header>Confirmation</Modal.Header>
           <Icon
             name="check-circle"
-            style={{ marginLeft: 135, marginTop: 10, color: "#65CC65" }}
+            style={{ marginLeft: 150, marginTop: 10, color: "#BA181B" }}
             size={40}
           />
-          <Modal.Body style={{ marginLeft: 55 }}>Confirm Donation ?</Modal.Body>
-          <Modal.Footer>
-            <Button flex="1" onPress={handleSubmit}>
-              Yes
-            </Button>
+          <Modal.Body style={{ marginLeft: 50 }}>
+            Are you sure you want to donate?
+          </Modal.Body>
+          <Modal.Footer style={styles.row}>
             <Button
-              flex="1"
+              bg="#BA181B"
+              rounded="md"
+              shadow={3}
+              style={{ width: 100, height: 40 }}
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}
             >
-              No
+              Cancel
+            </Button>
+            <Button
+              bg="#BA181B"
+              rounded="md"
+              shadow={3}
+              style={{ width: 100, height: 40 }}
+              onPress={handleSubmit}
+            >
+              Ok
             </Button>
           </Modal.Footer>
         </Modal.Content>
@@ -61,15 +72,30 @@ const Confirm = ({ request, navigation }) => {
             }}
           >
             {request.donate === false && (
-              <Image
-                source={require("../images/blood.png")}
-                resizeMode="center"
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignItems: "flex-start",
-                }}
-              />
+              <LinearGradient
+                colors={["#BA181B", "#E5383B"]}
+                style={styles.button}
+                start={{ y: 0.0, x: 0.0 }}
+                end={{ y: 0.0, x: 1.0 }}
+              >
+                <HStack>
+                  <Icon
+                    name="droplet"
+                    style={{ color: "#fff", alignSelf: "flex-start" }}
+                    size="20"
+                  />
+                  <Text
+                    style={{
+                      color: "#ffff",
+                      alignSelf: "center",
+                      textAlignVertical: "center",
+                      fontSize: 17,
+                    }}
+                  >
+                    Donate
+                  </Text>
+                </HStack>
+              </LinearGradient>
             )}
           </Pressable>
         )}
@@ -80,4 +106,22 @@ const Confirm = ({ request, navigation }) => {
 
 export default observer(Confirm);
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    margin: 10,
+  },
+  button: {
+    marginHorizontal: 17,
+    marginTop: 40,
+    textAlign: "center",
+    margin: 3,
+    color: "#a30000",
+    borderRadius: 10,
+    height: 40,
+    width: 110,
+    padding: 10,
+  },
+});

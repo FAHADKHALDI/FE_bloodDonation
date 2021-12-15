@@ -122,14 +122,19 @@ const EditProfileModal = () => {
               <Button.Group space={2}>
                 <Button
                   variant="ghost"
-                  colorScheme="blueGray"
+                  colorScheme="red"
                   onPress={() => {
                     setShowModal(false);
                   }}
                 >
                   Cancel
                 </Button>
-                <Button onPress={handleSubmit}>Submit</Button>
+                <Button
+                  style={{ backgroundColor: "#D91C1F" }}
+                  onPress={handleSubmit}
+                >
+                  Submit
+                </Button>
               </Button.Group>
             </Modal.Footer>
           </Modal.Content>

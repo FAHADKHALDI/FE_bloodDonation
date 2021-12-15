@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
-import { Button, HStack, Image, useToast } from "native-base";
-import React,{ useCallback } from "react";
+import { Button, HStack, Image, useToast, VStack } from "native-base";
+import React, { useCallback } from "react";
 import { View, StyleSheet, SafeAreaView, Pressable } from "react-native";
 import authStore from "../../stores/authStore";
 import EditRequestModal from "../Requests/EditRequestModal";
@@ -8,19 +8,19 @@ import requestStore from "../../stores/requestStore";
 import Confirm from "../Confirmation/Confirm";
 import { Block, Text } from "../../assets";
 import * as theme from "../../assets/theme";
+import { LinearGradient } from "expo-linear-gradient";
+import Icon from "react-native-vector-icons/Feather";
 import Maps from "../Maps/Maps";
 
 const url1 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
 
-
-const RequestDetail = ({ navigation, route  }) => {
-  
+const RequestDetail = ({ navigation, route }) => {
   const request = route.params.request;
   const toast = useToast();
   const handleDelete = () => {
     requestStore.deleteRequest(request._id, toast, navigation);
   };
-  
+
   return (
     <View style={styles.body}>
       <SafeAreaView style={styles.topContainer}>
@@ -53,34 +53,89 @@ const RequestDetail = ({ navigation, route  }) => {
               {request.name}
             </Text>
             <Text h3>File Number: {request.fileNumber}</Text>
-            <Text caption semibold>
-              {request.age} • {request.gender} • Civil ID:
-              {request.civilId}
-            </Text>
-            <Text caption semibold>
-              Phone Number: {request.phone}
-            </Text>
+            {request.donate === true && (
+              <Icon
+                name="check-circle"
+                style={{ color: "#BA181B", alignSelf: "flex-end" }}
+                size="20"
+              />
+            )}
           </Block>
         </Block>
-        <HStack style={{ ignItems: "space-between" }}>
-          {request.owner._id === authStore.user._id && (
-            <Pressable onPress={handleDelete}>
-              <Image
-                source={require("../images/cdelete.png")}
-                resizeMode="center"
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignItems: "flex-start",
-                  marginLeft: 125,
-                }}
-              />
-            </Pressable>
-          )}
-          <EditRequestModal request={request} navigation={navigation} />
-          <Confirm request={request} navigation={navigation} />  
-          <Maps/>
-        </HStack>
+        <View>
+          <SafeAreaView style={styles.detailsContainer}>
+            <Text secondary title style={styles.requestA}>
+              Gender: {request.gender}
+            </Text>
+            <Text style={styles.horizontal}>
+              _____________________________________________________
+            </Text>
+            <Text secondary title style={styles.requestA}>
+              Civil ID: {request.civilId}
+            </Text>
+            <Text style={styles.horizontal}>
+              _____________________________________________________
+            </Text>
+            <Text title secondary style={styles.requestA}>
+              Age: {request.age}
+            </Text>
+
+            <Text style={styles.horizontal}>
+              _____________________________________________________
+            </Text>
+            <Text title secondary style={styles.requestA}>
+              Phone Number: {request.phone}
+            </Text>
+
+            <Text style={styles.horizontal}>
+              _____________________________________________________
+            </Text>
+            <Text title secondary style={styles.requestA}>
+              Description: {request.description}
+            </Text>
+
+            <Text style={styles.horizontal}>
+              _____________________________________________________
+            </Text>
+            <VStack>
+              <HStack style={styles.btnContainer}>
+                <Confirm request={request} navigation={navigation} />
+                <Maps />
+              </HStack>
+              <HStack style={styles.btnContainer}>
+                {request.owner._id === authStore.user._id && (
+                  <LinearGradient
+                    colors={["#BA181B", "#E5383B"]}
+                    style={styles.button}
+                    start={{ y: 0.0, x: 0.0 }}
+                    end={{ y: 0.0, x: 1.0 }}
+                  >
+                    <Pressable onPress={handleDelete}>
+                      <HStack>
+                        <Icon
+                          name="delete"
+                          style={{ color: "#fff", alignSelf: "flex-start" }}
+                          size="20"
+                        />
+                        <Text
+                          style={{
+                            color: "#ffff",
+                            alignSelf: "center",
+                            textAlignVertical: "center",
+                            fontSize: 17,
+                          }}
+                        >
+                          Delete
+                        </Text>
+                      </HStack>
+                    </Pressable>
+                  </LinearGradient>
+                )}
+                <EditRequestModal request={request} navigation={navigation} />
+              </HStack>
+            </VStack>
+          </SafeAreaView>
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -106,8 +161,28 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     backgroundColor: "#ffffff",
-    marginTop: 10,
+    marginTop: 15,
     height: 250,
+  },
+  detailsContainer: {
+    marginTop: 125,
+    height: 250,
+  },
+  button: {
+    marginHorizontal: 17,
+    marginTop: 40,
+    textAlign: "center",
+    margin: 3,
+    color: "#a30000",
+    borderRadius: 10,
+    height: 40,
+    width: 110,
+    padding: 10,
+  },
+  btnContainer: {
+    position: "relative",
+    alignSelf: "center",
+    marginTop: 20,
   },
   requests: {
     marginTop: -55,
@@ -125,10 +200,24 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 10,
     marginRight: 10,
+    position: "absolute",
+  },
+  requestA: {
+    padding: 5,
+    marginTop: 15,
+    marginBottom: 15,
+    marginLeft: 20,
+    marginRight: 20,
+    position: "relative",
   },
   requestStatus: {
     marginRight: 20,
     overflow: "hidden",
     height: 90,
+  },
+  horizontal: {
+    color: "#BA181B",
+    fontWeight: "300",
+    alignSelf: "center",
   },
 });

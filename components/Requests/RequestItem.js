@@ -38,12 +38,15 @@ const RequestItem = ({ request, navigation }) => {
             {request.age} • {request.gender} • File Number:{request.fileNumber}
           </Text>
           {request.donate === true && (
-            <Icon name="check-circle" style={{ color: "#65CC65" }} size="35" />
+            <Icon
+              name="check-circle"
+              style={{ color: "#BA181B", alignSelf: "flex-end" }}
+              size="20"
+            />
           )}
         </Block>
       </Block>
     </Pressable>
-    
   );
 };
 

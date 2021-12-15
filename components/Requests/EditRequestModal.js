@@ -11,11 +11,15 @@ import {
   useToast,
   HStack,
   Image,
+  Text,
+  View,
 } from "native-base";
 import React, { useState } from "react";
 import { StyleSheet, Switch, Pressable } from "react-native";
 import authStore from "../../stores/authStore";
 import requestStore from "../../stores/requestStore";
+import { LinearGradient } from "expo-linear-gradient";
+import Icon from "react-native-vector-icons/Feather";
 
 const EditRequestModal = ({ request, navigation }) => {
   const [showModal, setShowModal] = useState(false);
@@ -48,15 +52,30 @@ const EditRequestModal = ({ request, navigation }) => {
     <>
       {request.owner._id === authStore.user._id && (
         <Pressable onPress={() => setShowModal(true)}>
-          <Image
-            source={require("../images/cedit.png")}
-            resizeMode="center"
-            style={{
-              width: 40,
-              height: 40,
-              alignItems: "flex-start",
-            }}
-          />
+          <LinearGradient
+            colors={["#BA181B", "#E5383B"]}
+            style={styles.button}
+            start={{ y: 0.0, x: 0.0 }}
+            end={{ y: 0.0, x: 1.0 }}
+          >
+            <HStack>
+              <Icon
+                name="edit"
+                style={{ color: "#fff", alignSelf: "flex-start" }}
+                size="20"
+              />
+              <Text
+                style={{
+                  color: "#ffff",
+                  alignSelf: "center",
+                  textAlignVertical: "center",
+                  fontSize: 17,
+                }}
+              >
+                Edit
+              </Text>
+            </HStack>
+          </LinearGradient>
         </Pressable>
       )}
 
@@ -177,22 +196,34 @@ const EditRequestModal = ({ request, navigation }) => {
                 }
               />
             </FormControl>
-            <HStack alignItems="center" space={4}>
-              <Switch size="md" value={isEnable} onValueChange={handleChange} />
-            </HStack>
+            <View alignItems="flex-end">
+              <HStack alignItems="center" space={3} marginTop="1">
+                <Text>URGENT</Text>
+                <Switch
+                  size="md"
+                  value={isEnable}
+                  onValueChange={handleChange}
+                />
+              </HStack>
+            </View>
           </Modal.Body>
           <Modal.Footer>
             <Button.Group space={2}>
               <Button
                 variant="ghost"
-                colorScheme="blueGray"
+                colorScheme="red"
                 onPress={() => {
                   setShowModal(false);
                 }}
               >
                 Cancel
               </Button>
-              <Button onPress={handleSubmit}>Submit</Button>
+              <Button
+                style={{ backgroundColor: "#D91C1F" }}
+                onPress={handleSubmit}
+              >
+                Submit
+              </Button>
             </Button.Group>
           </Modal.Footer>
         </Modal.Content>
@@ -203,4 +234,16 @@ const EditRequestModal = ({ request, navigation }) => {
 
 export default observer(EditRequestModal);
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  button: {
+    marginHorizontal: 17,
+    marginTop: 40,
+    textAlign: "center",
+    margin: 3,
+    color: "#a30000",
+    borderRadius: 10,
+    height: 40,
+    width: 110,
+    padding: 10,
+  },
+});

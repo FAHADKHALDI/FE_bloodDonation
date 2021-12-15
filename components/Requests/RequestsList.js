@@ -104,8 +104,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("A+")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -115,8 +114,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("A-")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -126,8 +124,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("B+")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -137,8 +134,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("B-")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -148,8 +144,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("O+")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -159,8 +154,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("O-")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -170,8 +164,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("AB+")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
@@ -181,8 +174,7 @@ const RequestsList = ({ navigation }) => {
           </Button>
           <Button
             onPress={() => setBloodType("AB-")}
-            h="9"
-            w="10"
+            style={{ width: 50, height: 35 }}
             bg="#BA181B"
             rounded="md"
             shadow={3}
