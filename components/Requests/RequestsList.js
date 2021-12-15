@@ -17,9 +17,22 @@ const RequestsList = ({ navigation }) => {
 
   const [donated, setDonated] = useState(false);
 
-  const [bloodType, setBloodType] = useState("");
+  const [bloodType, setBloodType] = useState(false);
 
-  const requestList = RequestStore.requests
+  // const requestList = RequestStore.requests
+  //   .filter((request) =>
+  //     request.fileNumber.toLowerCase().includes(query.toLowerCase())
+  //   )
+  //   .map((request) => (
+  //     <RequestItem
+  //       request={request}
+  //       key={request._id}
+  //       navigation={navigation}
+  //     />
+  //   ));
+
+  const notDonatedList = RequestStore.requests
+    .filter((request) => request.donate === false)
     .filter((request) =>
       request.fileNumber.toLowerCase().includes(query.toLowerCase())
     )
@@ -33,6 +46,9 @@ const RequestsList = ({ navigation }) => {
 
   const filteredUrgent = RequestStore.requests
     .filter((request) => request.priority === "URGENT")
+    .filter((request) =>
+      request.fileNumber.toLowerCase().includes(query.toLowerCase())
+    )
     .map((request) => (
       <RequestItem
         request={request}
@@ -43,6 +59,9 @@ const RequestsList = ({ navigation }) => {
 
   const filterDonated = RequestStore.requests
     .filter((request) => request.donate === true)
+    .filter((request) =>
+      request.fileNumber.toLowerCase().includes(query.toLowerCase())
+    )
     .map((request) => (
       <RequestItem
         request={request}
@@ -60,6 +79,22 @@ const RequestsList = ({ navigation }) => {
         navigation={navigation}
       />
     ));
+
+  const handleShowAll = () => {
+    setBloodType("");
+
+    RequestStore.requests
+      .filter((request) =>
+        request.fileNumber.toLowerCase().includes(query.toLowerCase())
+      )
+      .map((request) => (
+        <RequestItem
+          request={request}
+          key={request._id}
+          navigation={navigation}
+        />
+      ));
+  };
 
   return (
     <View>
@@ -91,7 +126,7 @@ const RequestsList = ({ navigation }) => {
 
         <ScrollView horizontal={true}>
           <Button
-            onPress={() => setBloodType("")}
+            onPress={handleShowAll}
             style={styles.btn}
             h="9"
             w="20"
@@ -100,7 +135,7 @@ const RequestsList = ({ navigation }) => {
             marginLeft={3}
             marginBottom={1}
           >
-            <Text style={styles.txt}>ShowAll</Text>
+            <Text style={styles.txt}>Show All</Text>
           </Button>
           <Button
             onPress={() => setBloodType("A+")}
@@ -193,7 +228,7 @@ const RequestsList = ({ navigation }) => {
           ? filterDonated
           : bloodType
           ? filterBlood
-          : requestList}
+          : notDonatedList}
       </ScrollView>
     </View>
   );
