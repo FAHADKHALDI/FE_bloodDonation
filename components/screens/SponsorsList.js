@@ -2,7 +2,7 @@ import React from "react";
 import "react-native-gesture-handler";
 import { SafeAreaView, StyleSheet, Dimensions } from "react-native";
 import { Block, Text } from "../../assets";
-import { View, ScrollView, Image, Pressable } from "native-base";
+import { View, ScrollView, Image, Pressable, VStack } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
 import { observer } from "mobx-react";
 
@@ -14,25 +14,52 @@ const SponsorsList = ({ navigation }) => {
           Sponsors
         </Text>
       </SafeAreaView>
-      <LinearGradient
-        colors={["#BA181B", "#E5383B"]}
-        style={styles.button}
-        start={{ y: 0.0, x: 0.0 }}
-        end={{ y: 0.0, x: 1.0 }}
-      >
-        <Pressable onPress={() => navigation.navigate("Home")}>
-          <Text
-            style={{
-              color: "#ffff",
-              alignSelf: "center",
-              textAlignVertical: "center",
-              fontSize: 17,
-            }}
-          >
-            Back to Home
-          </Text>
-        </Pressable>
-      </LinearGradient>
+      <SafeAreaView style={styles.bottomContainer}>
+        <ScrollView>
+          <VStack>
+            <Block card shadow>
+              <Image
+                style={styles.logo}
+                source={require("../images/bloodbank.jpg")}
+                alt="blood bank"
+              />
+            </Block>
+            <Block card shadow>
+              <Image
+                style={styles.logo}
+                source={require("../images/coded.png")}
+                alt="coded"
+              />
+            </Block>
+            <Block card shadow>
+              <Image
+                style={styles.logo}
+                source={require("../images/cp.jpg")}
+                alt="cp"
+              />
+            </Block>
+          </VStack>
+        </ScrollView>
+        <LinearGradient
+          colors={["#BA181B", "#E5383B"]}
+          style={styles.button}
+          start={{ y: 0.0, x: 0.0 }}
+          end={{ y: 0.0, x: 1.0 }}
+        >
+          <Pressable onPress={() => navigation.navigate("Home")}>
+            <Text
+              h2
+              style={{
+                color: "#ffff",
+                alignSelf: "center",
+                textAlignVertical: "center",
+              }}
+            >
+              Back to Home
+            </Text>
+          </Pressable>
+        </LinearGradient>
+      </SafeAreaView>
     </View>
   );
 };
@@ -79,13 +106,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#BA181B",
     padding: 30,
     position: "relative",
-    height: 150,
+    height: 100,
   },
   bottomContainer: {
     flex: 1,
     backgroundColor: "#ffffff",
-    marginTop: -675,
     height: 150,
+    zIndex: -1,
   },
   btnContainer: {
     position: "absolute",
@@ -93,8 +120,8 @@ const styles = StyleSheet.create({
     right: 30,
   },
   button: {
-    marginHorizontal: 20,
-    marginTop: 500,
+    marginHorizontal: 40,
+    marginTop: 0,
     textAlign: "center",
     margin: 5,
     color: "#171717",
@@ -105,10 +132,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#171717",
   },
   logo: {
+    position: "relative",
+    height: 250,
+    width: 250,
+    alignContent: "center",
+    justifyContent: "center",
     alignSelf: "center",
-    height: 150,
-    width: 130,
-    marginTop: -40,
+    marginTop: 20,
+    marginBottom: 20,
   },
   body: {
     flex: 1,

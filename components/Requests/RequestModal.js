@@ -156,8 +156,8 @@ const RequestModal = () => {
                   mt={1}
                   onValueChange={(gender) => setRequest({ ...request, gender })}
                 >
-                  <Select.Item label="Male" value="male" />
-                  <Select.Item label="Female" value="female" />
+                  <Select.Item label="Male" value="Male" />
+                  <Select.Item label="Female" value="Female" />
                 </Select>
               </VStack>
             </FormControl>

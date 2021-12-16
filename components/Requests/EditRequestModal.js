@@ -82,12 +82,12 @@ const EditRequestModal = ({ request, navigation }) => {
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <Modal.Content maxWidth="400px">
           <Modal.CloseButton />
-          <Modal.Header>Create a Request</Modal.Header>
+          <Modal.Header>Edit Request</Modal.Header>
           <Modal.Body>
             <FormControl>
               <FormControl.Label>Name</FormControl.Label>
               <Input
-                placeholder="Enter Your Name"
+                placeholder="Enter Name"
                 defaultValue={request.name}
                 onChangeText={(name) =>
                   setUpdatedRequest({ ...updatedRequest, name })
@@ -181,8 +181,8 @@ const EditRequestModal = ({ request, navigation }) => {
                     setUpdatedRequest({ ...updatedRequest, gender })
                   }
                 >
-                  <Select.Item label="Male" value="male" />
-                  <Select.Item label="Female" value="female" />
+                  <Select.Item label="Male" value="Male" />
+                  <Select.Item label="Female" value="Female" />
                 </Select>
               </VStack>
             </FormControl>
