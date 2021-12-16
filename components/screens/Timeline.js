@@ -29,13 +29,6 @@ const Timeline = ({ navigation }) => {
           source={require("../images/WALogo.png")}
           alt="white hayah logo"
         />
-        <Pressable onPress={handleLogOut}>
-          <Image
-            style={styles.logout}
-            source={require("../images/Logout.png")}
-            alt="logout"
-          />
-        </Pressable>
         <Block>
           <Pressable onPress={() => navigation.navigate("ProfilePage")}>
             <Image
@@ -55,6 +48,13 @@ const Timeline = ({ navigation }) => {
           <Text white style={styles.datetext}>
             {currentDate}
           </Text>
+          <Pressable onPress={handleLogOut}>
+            <Image
+              style={styles.logout}
+              source={require("../images/Logout.png")}
+              alt="logout"
+            />
+          </Pressable>
         </Block>
       </SafeAreaView>
       <Block style={styles.blockContainer}></Block>
@@ -115,8 +115,7 @@ const styles = StyleSheet.create({
   bottomContainer: {
     flex: 1,
     backgroundColor: "#ffffff",
-    marginTop: -675,
-    height: 150,
+    marginTop: -707,
   },
   btnContainer: {
     position: "absolute",
@@ -169,6 +168,6 @@ const styles = StyleSheet.create({
     height: 23,
     marginLeft: 375,
     position: "absolute",
-    marginTop: 15,
+    marginTop: -80,
   },
 });
