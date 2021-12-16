@@ -221,7 +221,7 @@ const RequestsList = ({ navigation }) => {
         </ScrollView>
       </HStack>
 
-      <ScrollView>
+      <ScrollView style={{ marginBottom: 60 }}>
         {isUrgent
           ? filteredUrgent
           : donated

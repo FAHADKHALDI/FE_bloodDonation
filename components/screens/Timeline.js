@@ -114,6 +114,8 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 1,
+    display: "flex",
+    position: "relative",
     backgroundColor: "#ffffff",
     marginTop: -707,
   },
