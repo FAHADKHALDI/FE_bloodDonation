@@ -9,12 +9,20 @@ import {
   View,
   Image,
 } from "react-native";
+
 import { LinearGradient } from "expo-linear-gradient";
 import Icon from "react-native-vector-icons/Feather";
 import { Button } from "native-base";
 
-const url1 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
 
+// const [ location, setLocation ] = useState(false)
+
+const url1 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
+const url2 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
+const url3 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
+const url4 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
+const url5 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
+const url6 = "https://goo.gl/maps/Hu87cgFfvSQDhcEW7";
 const Maps = () => {
   const openUrl = async (url) => {
     const isSupported = await Linking.canOpenURL(url);
@@ -24,6 +32,9 @@ const Maps = () => {
       Alert.alert(`can not open this url: ${url}`);
     }
   };
+  
+  
+  
   return (
     <Pressable onPress={() => openUrl(url1)}>
       <View

@@ -97,6 +97,13 @@ const RequestDetail = ({ navigation, route }) => {
             <Text style={styles.horizontal}>
               _____________________________________________________
             </Text>
+            <Text title secondary style={styles.requestA}>
+              Location: {request.location}
+            </Text>
+
+            <Text style={styles.horizontal}>
+              _____________________________________________________
+              </Text>
             <VStack>
               <HStack style={styles.btnContainer}>
                 <Confirm request={request} navigation={navigation} />

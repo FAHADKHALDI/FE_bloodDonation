@@ -30,12 +30,17 @@ const RequestModal = () => {
     gender: "",
     description: "",
     priority: "NORMAL",
+    location:"Blood Bank",
   });
 
   const toast = useToast();
   const handleChange = () => {
     setIsEnable(!isEnable);
     setRequest({ ...request, priority: isEnable ? "NORMAL" : "URGENT" });
+  };
+  const handlelocation = () => {
+    setIsEnable(!isEnable);
+    setRequest({ ...request, location: isEnable ? "NORMAL" : "URGENT" });
   };
   const handleSubmit = () => {
     console.log(request);
@@ -169,6 +174,32 @@ const RequestModal = () => {
                   setRequest({ ...request, description })
                 }
               />
+            </FormControl>
+            <FormControl mt="3">
+              <FormControl.Label>Location</FormControl.Label>
+              <VStack alignItems="center" space={4}>
+                <Select
+                  selectedValue={request.location}
+                  minWidth="200"
+                  accessibilityLabel="Choose Hosptial"
+                  placeholder="Choose Hosptial"
+                  _selectedItem={{
+                    bg: "teal.600",
+                    endIcon: <CheckIcon size="5" />,
+                  }}
+                  mt={1}
+                  onValueChange={(location) =>
+                    setRequest({ ...request, location })
+                  }
+                >
+                  <Select.Item label="Blood Bank" value="Blood Bank" />
+                  <Select.Item label="Farwaniya Hospital" value="Farwaniya Hospital" />
+                  <Select.Item label="Adan Hospital" value="Adan Hospital" />
+                  <Select.Item label="AlAmiri Hospital" value="AlAmiri Hospital" />
+                  <Select.Item label="Jahra Hospital" value="Jahra Hospital" />
+                  <Select.Item label="Jaber Hospital" value="Jaber Hospital" />
+                </Select>
+              </VStack>
             </FormControl>
             <View alignItems="flex-end">
               <HStack alignItems="center" space={3} marginTop="1">
